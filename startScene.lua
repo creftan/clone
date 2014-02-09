@@ -7,7 +7,7 @@ function scene:createScene(e)
 
 	local menuTransition
 	local menuTransition2
-
+	local buttonGroup
 	local menuDown = false
 	--[[		MENU 		]]--
 	
@@ -49,7 +49,7 @@ function scene:createScene(e)
 	local menuRect					= display.newRect(menuGroup,0,0,250,350)
 	
 	for i=1,#menuList do
-		local buttonGroup			= display.newGroup()
+		buttonGroup					= display.newGroup()
 		buttonGroup.y 				= -180
 
 		local buttons				= display.newRect(buttonGroup,0,0,120,60)
@@ -61,6 +61,11 @@ function scene:createScene(e)
 		menuGroup:insert(buttonGroup)
 
 		buttonGroup:addEventListener("tap",menuFunc[i].EventListener)
+
+		function removeEventListeners()
+			print("Delete EventListener")
+			buttonGroup:removeEventListener("tap",menuFunc[i].EventListener)
+		end
 	end
 
 	--[[	   EFFECTS 		]]--
@@ -90,6 +95,7 @@ end
 
 function scene:exitScene(e)
 
+removeEventListeners()
 display.remove(menuRect)
 display.remove(startButton)
 display.remove(optionsButton)
