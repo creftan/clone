@@ -30,7 +30,7 @@ local CamMaxX = display.viewableContentWidth;
     local Density = 1;
     local Friction = 0.3;
     local Bounce = 0;
-    local Radius = 20;
+    local Radius = 18;
 
 Physics.setGravity( 0, Gravity );
 local BallStartX = CamMaxX*0.25;
@@ -44,7 +44,22 @@ Physics.addBody( mrFloor , "static", { friction=0.5, bounce=0.0 } );
 local string = "0"
 local ScoreBoard = display.newText(string, 10, 10, native.systemFont, 10)
     --ScoreBoard:setFillColor(1,1,1)
+
+local backgroundgroup = display.newGroup()   
+local sky = display.newImageRect(backgroundgroup,"art/sky.png",1000,1000)
+    sky.x = CamMaxX*.5
+    sky.y = CamMaxY*.5
+    backgroundgroup:toBack()
+
+local ground = display.newImageRect(backgroundgroup,"art/ground.png",1463,394)
+    ground.xScale = .3
+    ground.yScale = .3
     
+    ground.y = (CamMaxY/100)*109
+    ground.x = CamMaxX/2
+    ground:toFront()
+    mrFloor:toBack()
+
 local function PrintScore(Score)
     print ("Score  "..Score)
     ScoreBoard.text = Score
@@ -114,7 +129,7 @@ local function Update (event)
             
             Physics.addBody( Body.Obj1 , "static", { friction=0.5, bounce=0.0 } );
             Physics.addBody( Body.Obj2 , "static", { friction=0.5, bounce=0.0 } );
-
+            ground:toFront()
             Obst[ObstCount] = Body;
         end
 
@@ -150,7 +165,7 @@ end
 
 function GlobalPreCollisionFunction(self, event)
     print('Reseting')
-    Physics.stop();
+    --Physics.stop();
     physics.pause();
     Reseting = true;
 end
