@@ -115,22 +115,22 @@ function scene:createScene(e)
 		floorgroup = display.newGroup()
 		topgroup = display.newGroup()
 
-		local sky = display.newRect (0,0,_W,_H)
+		local sky = display.newImageRect ("art/backdrop/backdrop.png",_W,_H)
 			sky:setFillColor(.5,.6,.9)
 			sky.x = _W*.5
 			sky.y = _H*.4
 		
 		local ground_top_1 = display.newImageRect(topgroup,"art/startScreen/ground_top_2.png",701,64)
-			ground_top_1.xScale = .5
-			ground_top_1.yScale = .5
+			ground_top_1.xScale = 1
+			ground_top_1.yScale = 1
 			ground_top_1.x = _W*.5
-			ground_top_1.y = _H*.8
+			ground_top_1.y = _H*.84
 
 		local ground_top_2 = display.newImageRect(topgroup,"art/startScreen/ground_top_2.png",701,64)
-			ground_top_2.xScale = .5
-			ground_top_2.yScale = .5
-			ground_top_2.x = _W*.5 + 350
-			ground_top_2.y = _H*.8
+			ground_top_2.xScale = 1
+			ground_top_2.yScale = 1
+			ground_top_2.x = _W*.5 + 700
+			ground_top_2.y = _H*.84
 			
 		local floorbottom = display.newRect(floorgroup,0,0,_W,_H)
 			floorbottom.x = _W/2
@@ -152,7 +152,7 @@ function scene:createScene(e)
 
 		p.position1 = p.position1 - speed
 
-		if p.position1 < -350 then 
+		if p.position1 < -700 then 
 			p.position1 = 0 
 		end
 
