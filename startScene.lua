@@ -2,6 +2,38 @@ local storyboard 	= require "storyboard"
 local scene 		= storyboard.newScene()
 
 function scene:createScene(e)
+
+--[[	local backgroundgroup = display.newGroup()   
+	local buttongroup = display.newGroup()
+
+	local sky = display.newImageRect(backgroundgroup,"art/sky.png",1000,1000)
+   		sky.x =_W*.5
+    	sky.y =_H*.5
+    	backgroundgroup:toBack()
+
+    local startbutton = display.newImageRect(buttongroup,"art/startbutton.png",317,144)
+    	startbutton.xScale = .6
+    	startbutton.yScale = .6
+    	
+    	startbutton.x = _W*.4
+    	startbutton.y = _H*.8
+
+    local optionbutton = display.newImageRect(buttongroup,"art/optionsbutton.png",225,231)
+    	optionbutton.xScale = .4
+    	optionbutton.yScale = .4
+    	
+    	optionbutton.x = _W*.8
+    	optionbutton.y = _H*.6
+
+    local scorebutton = display.newImageRect(buttongroup,"art/scorebutton.png",225,231)
+    	scorebutton.xScale = .4
+    	scorebutton.yScale = .4
+    	
+    	scorebutton.x = _W*.7
+    	scorebutton.y = _H*.4
+
+]]
+
 	local sceneView = self.view
 	--[[	  VARIABLES		]]--
 
@@ -101,6 +133,17 @@ display.remove(startButton)
 display.remove(optionsButton)
 display.remove(helpButton)
 display.remove(menuGroup)
+
+display.remove(startbutton)
+display.remove(optionbutton)
+display.remove(scorebutton)
+
+
+
+display.remove(buttonGroup)
+display.remove(backgroundGroup)
+
+
 menuTransition2 = nil
 menuTransition 	= nil
 
