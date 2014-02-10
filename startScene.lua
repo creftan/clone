@@ -17,16 +17,6 @@ function scene:createScene(e)
 	local createdBackground = false
 	local startGame = false
 
-	--[[	BACKGROUND 		]]--
-
-
-	storyboard.gotoScene( "startScene" )
-
--- reload the scene after 5 seconds
-	timer.performWithDelay( 5000, function()
-		print("Go here")
-	    storyboard.reloadScene()
-	end, 1 )
 
 
 

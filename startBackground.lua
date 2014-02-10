@@ -95,10 +95,15 @@ local sceneView = self.view
 			ground_top_2.x = _W*.5 + 700
 			ground_top_2.y = _H*.84
 			
+		function rgbv(val)
+			local answer = val / 256
+			return answer
+		end
+
 		floorbottom = display.newRect(floorgroup,0,0,_W,_H)
 			floorbottom.x = _W/2
 			floorbottom.y = _H*1.3
-			floorbottom:setFillColor(.62,.37,.16)
+			floorbottom:setFillColor(rgbv(160),rgbv(96),rgbv(40))
 
 		floorgroup:insert(topgroup)
 		--sceneView:insert(floorgroup)
