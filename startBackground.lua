@@ -112,17 +112,17 @@ local sceneView = self.view
 			sky.x = _W*.5
 			sky.y = _H*.4
 		
-		ground_top_1 = display.newImageRect(topgroup,"art/startScreen/ground_top_2.png",701,64)
+		ground_top_1 = display.newImageRect(topgroup,"art/startScreen/ground_top_2.png",692,129)
 			ground_top_1.xScale = 1
 			ground_top_1.yScale = 1
 			ground_top_1.x = _W*.5
-			ground_top_1.y = _H*.84
+			ground_top_1.y = _H*.90
 
-		ground_top_2 = display.newImageRect(topgroup,"art/startScreen/ground_top_2.png",701,64)
+		ground_top_2 = display.newImageRect(topgroup,"art/startScreen/ground_top_2.png",692,129)
 			ground_top_2.xScale = 1
 			ground_top_2.yScale = 1
-			ground_top_2.x = _W*.5 + 700
-			ground_top_2.y = _H*.84
+			ground_top_2.x = _W*.5 + 692
+			ground_top_2.y = _H*.90
 			
 		function rgbv(val)
 			local answer = val / 256
@@ -149,7 +149,7 @@ local sceneView = self.view
 
 		p.position1 = p.position1 - speed
 
-		if p.position1 < -700 then 
+		if p.position1 < -692 then 
 			p.position1 = 0 
 		end
 

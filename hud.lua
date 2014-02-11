@@ -11,7 +11,7 @@ function hud.hudFunctions()
 end
 
 function hud.createHud(event,group)
-	hud.hudFunctions(forMusic,forSfx)
+--[[	hud.hudFunctions(forMusic,forSfx)
 	local hudList = {
 				{
 				listener=forMusic,
@@ -33,6 +33,7 @@ function hud.createHud(event,group)
 		group:insert(hudGroup)
 
 	end
+]]
 end
 
 

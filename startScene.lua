@@ -345,6 +345,8 @@ display.remove(sky)
 display.remove(ground_top_1)
 display.remove(ground_top_2)
 display.remove(floorbottom)
+display.remove(logo)
+display.remove(copy)
 
 menuTransition2 = nil
 menuTransition 	= nil
