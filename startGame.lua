@@ -1,6 +1,6 @@
 local storyboard 	= require "storyboard"
 local scene 		= storyboard.newScene()
-
+local hud           = require "hud"
 function scene:createScene(e)
 	local sceneView = self.view
 
@@ -18,7 +18,8 @@ function scene:createScene(e)
 
 local Physics     = require( "physics" )
                     --require( "sprite" )
-
+local testGroup = display.newGroup()
+hud.createHud(0,testGroup)
 Physics.start();
 --Physics.setDrawMode( "hybrid" );
 
@@ -180,7 +181,7 @@ DrBall:addEventListener( "preCollision", DrBall )
 Runtime:addEventListener( "enterFrame", Update )
 Runtime:addEventListener( "touch", OnTouch )
 
- 
+
 
 end 
 

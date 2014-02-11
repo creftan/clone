@@ -210,32 +210,47 @@ end
 		menuTransitionFunc("startGame")
 	end
 
+	local function musicOff(event)
+		print("music")
+	end
+
+	local function soundOff(event)
+		print("sound")
+	end
 	local menuFunc	= { 
 						{ 
 						EventListener=startGame,
 						Label="START",
-						}, 
+						}
+					}
+
+	local audioList	= { 
+						{ 
+						EventListener=soundOff,
+						},
+						{ 
+						EventListener=musicOff,
+						},
 					}
 
 	local menuGroup = display.newGroup()
 	menuGroup.x, menuGroup.y = _W*.5, -_H
-	menuGroup.alpha = .5
+	menuGroup.alpha = 1
 	menuGroup:toFront()
 
-	--local menuRect = display.newRect(menuGroup,0,0,250,350)
+	
 	
 	for i=1,#menuFunc do
 		buttonGroup	= display.newGroup()
 		buttonGroup.y = -80
-
+		buttonGroup.alpha = .5
 		local buttons = display.newRect(buttonGroup,0,0,120,60)
-		buttons.y = buttons.height*i*1.5
 		
 		local buttonText = display.newText(buttonGroup,menuFunc[i].Label,0,0,nil,14)
 		buttonText.x, buttonText.y = buttons.x, buttons.y
 
 		menuGroup:insert(buttonGroup)
-
+		menuGroup:toFront()
 		buttonGroup:addEventListener("tap",menuFunc[i].EventListener)
 
 		function removeEventListeners()
@@ -243,7 +258,20 @@ end
 			buttonGroup:removeEventListener("tap",menuFunc[i].EventListener)
 		end
 	end
+	--[[
+	for i=1,#audioList do
+		audioButtonGroup = display.newGroup()
 
+		audioButtonGroup.y = 200
+		audioButtonGroup.x = -97
+
+		local audioButton = display.newRect(audioButtonGroup,0,0,55,55)
+		audioButton.x = audioButton.height*i*1.18
+		audioButtonGroup.alpha = .5
+		audioButtonGroup:addEventListener("tap",audioList[i].EventListener)
+		menuGroup:insert(audioButtonGroup)
+	end
+	]]
 	--[[	   EFFECTS 		]]--
 
 
