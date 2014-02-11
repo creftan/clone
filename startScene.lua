@@ -210,41 +210,23 @@ end
 		menuTransitionFunc("startGame")
 	end
 
-	local function startOptions()
-		menuTransitionFunc("startGame")
-	end
-
-	local function startHelp()
-		menuTransitionFunc("startGame")
-	end
-
 	local menuFunc	= { 
 						{ 
 						EventListener=startGame,
 						Label="START",
 						}, 
-						{ 
-						EventListener=startOptions,
-						Label="OPTIONS",
-						}, 
-						{ 
-						EventListener=startHelp,
-						Label="HELP",
-						}, 
 					}
-
-	local menuList	= {"START","OPTIONS","HELP"}
 
 	local menuGroup = display.newGroup()
 	menuGroup.x, menuGroup.y = _W*.5, -_H
 	menuGroup.alpha = .5
 	menuGroup:toFront()
 
-	local menuRect = display.newRect(menuGroup,0,0,250,350)
+	--local menuRect = display.newRect(menuGroup,0,0,250,350)
 	
-	for i=1,#menuList do
+	for i=1,#menuFunc do
 		buttonGroup	= display.newGroup()
-		buttonGroup.y = -180
+		buttonGroup.y = -80
 
 		local buttons = display.newRect(buttonGroup,0,0,120,60)
 		buttons.y = buttons.height*i*1.5
