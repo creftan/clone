@@ -50,6 +50,19 @@ local sceneView = self.view
 		parallax2.layer1_2.x = _W/2 + 512
 		parallax2.layer1_2.y = _H*.64
 
+		parallax2.layer3_1=display.newImageRect(parallax2,"art/startScreen/mountain_2.png", 64,128)
+		parallax2.layer3_1.xScale = 2
+		parallax2.layer3_1.yScale = 2
+		parallax2.layer3_1.x = _W/2 + 300
+		parallax2.layer3_1.y = _H*.64
+
+		parallax2.layer3_2=display.newImageRect(parallax2,"art/startScreen/mountain_2.png", 64,128)
+		parallax2.layer3_2.xScale = 2
+		parallax2.layer3_2.yScale = 2
+		parallax2.layer3_2.x = _W/2 + 812
+		parallax2.layer3_2.y = _H*.64
+
+
 		parallax1.layer1_1=display.newImageRect(parallax1,"art/startScreen/bushes.png", 256,64)
 		parallax1.layer1_1.xScale = 2
 		parallax1.layer1_1.yScale = 2

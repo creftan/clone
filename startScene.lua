@@ -71,7 +71,7 @@ function scene:createScene(e)
 		doge.y = _H * .4
 		doge.isVisible = false
 		]]--
-		p.position1 = 0 
+--[[		p.position1 = 0 
 		p.position2 = 0 
 		p.position3 = 0 
 
@@ -200,7 +200,9 @@ function scene:createScene(e)
 
 	makescene()
 	Runtime:addEventListener("enterFrame",dostuff)
+--]]
 
+end 
 	--[[		MENU 		]]--
 	
 
