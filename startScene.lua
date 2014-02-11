@@ -283,12 +283,12 @@ end
 
 	function menuTransitionFunc(scene)
 		if not menuDown then
-			transitionFunc(menuGroup,100,_H*.55,easing.InOutQuad,function()
+			transitionFunc(menuGroup,100,_H*.75,easing.InOutQuad,function()
 				transitionFunc(menuGroup,100,_H*.7,easing.InOutQuad)
 			end)
 			menuDown = true
 		else
-			transitionFunc(menuGroup,100,_H*.55,easing.InOutQuad,function()
+			transitionFunc(menuGroup,100,_H*.75,easing.InOutQuad,function()
 				transitionFunc(menuGroup,100,-_H,easing.InOutQuad,function()
 					storyboard.gotoScene(scene)
 				end)
