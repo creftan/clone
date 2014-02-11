@@ -238,16 +238,16 @@ end
 	menuGroup.alpha = 1
 	menuGroup:toFront()
 
-	
+	local menulist = {"art/buttons/b_play.png"}
 	
 	for i=1,#menuFunc do
 		buttonGroup	= display.newGroup()
 		buttonGroup.y = -80
-		buttonGroup.alpha = .5
-		local buttons = display.newRect(buttonGroup,0,0,120,60)
+		buttonGroup.alpha = 1
+		local buttons = display.newImageRect(buttonGroup,menulist[i],128,64)
 		
-		local buttonText = display.newText(buttonGroup,menuFunc[i].Label,0,0,nil,14)
-		buttonText.x, buttonText.y = buttons.x, buttons.y
+		--local buttonText = display.newText(buttonGroup,menuFunc[i].Label,0,0,nil,14)
+		--buttonText.x, buttonText.y = buttons.x, buttons.y
 
 		menuGroup:insert(buttonGroup)
 		menuGroup:toFront()
@@ -284,7 +284,7 @@ end
 	function menuTransitionFunc(scene)
 		if not menuDown then
 			transitionFunc(menuGroup,100,_H*.55,easing.InOutQuad,function()
-				transitionFunc(menuGroup,100,_H*.5,easing.InOutQuad)
+				transitionFunc(menuGroup,100,_H*.7,easing.InOutQuad)
 			end)
 			menuDown = true
 		else

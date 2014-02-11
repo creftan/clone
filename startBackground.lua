@@ -15,6 +15,7 @@ local sceneView = self.view
 	parallax2 = display.newGroup()
 	parallax1 = display.newGroup()
 	parallax2:toBack()
+	 
 	--local doge = display.newGroup()
 	--sceneView:insert(parallax2)
 	--sceneView:insert(parallax1)
@@ -37,6 +38,21 @@ local sceneView = self.view
 		p.position1 = 0 
 		p.position2 = 0 
 		p.position3 = 0 
+
+	logo = display.newImageRect("art/startscreen/logo.png", 226,60)
+	logo.xScale = 2
+	logo.yScale = 2
+	logo.x = _W*.5
+	logo.y = _H*.2
+	
+	copy = display.newImageRect("art/startscreen/copyright.png", 113,30)
+	copy.xScale = 1
+	copy.yScale = 1
+	copy.x = _W*.5
+	copy.y = _H
+	
+
+
 
 		parallax2.layer1_1=display.newImageRect(parallax2,"art/startScreen/mountain.png", 64,128)
 		parallax2.layer1_1.xScale = 2
@@ -121,7 +137,7 @@ local sceneView = self.view
 		floorgroup:insert(topgroup)
 		--sceneView:insert(floorgroup)
 		sky:toBack()
-
+		copy:toFront()
 		floorgroup.y = _H*.1
 	end 
 
