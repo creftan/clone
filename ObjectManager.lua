@@ -63,8 +63,12 @@ function O:CreateObsticles()
  	O.Core:CreateTimeObject( 20, "/art/ingame/mountain.png", "/art/ingame/mountain.png", ObstStartPosX, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.3), 2, false, false, "static", 0, 0, 0, 0)
 	O.Core:CreateTimeObject( 15, "/art/ingame/mountain_2.png", "/art/ingame/mountain_2.png", ObstStartPosX, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.3), 1, false, false, "static", 0, 0, 0, 0)
 	
-	O.Core:CreateTimeObject( 2, "/art/Pipe1.png", "/art/Pipe1.png", ObstStartPosX, Obj1Y, O.WorldSpeed, 4, true, false, "static", 0, 10, 1, 0)
-	O.Core:CreateTimeObject( 2, "/art/Pipe2.png", "/art/Pipe2.png", ObstStartPosX, Obj2Y, O.WorldSpeed, 4, true, false, "static", 0, 10, 1, 0)
+	O.Core:CreateTimeObject( 2, "/art/ingame/longcatbody1.png", "/art/ingame/longcatbody1.png", ObstStartPosX, Obj1Y, O.WorldSpeed, 4, true, false, "static", 0, 10, 1, 0)
+	O.Core:CreateTimeObject( 2, "/art/ingame/longcatbody2.png", "/art/ingame/longcatbody2.png", ObstStartPosX, Obj2Y, O.WorldSpeed, 4, true, false, "static", 0, 10, 1, 0)
+	O.Core:CreateTimeObject( 2, "/art/ingame/longcatarm1.png", "/art/ingame/longcatarm1.png", ObstStartPosX-35, Obj1Y+110, O.WorldSpeed, 4, true, false, "static", 0, 10, 1, 0)
+	O.Core:CreateTimeObject( 2, "/art/ingame/longcatarm2.png", "/art/ingame/longcatarm2.png", ObstStartPosX-35, Obj2Y-110, O.WorldSpeed, 4, true, false, "static", 0, 10, 1, 0)
+
+
 
 	O.Core:CreateTileObject( "/art/ingame/grass.png", "/art/ingame/grass.png", (ObstStartPosX + 300), O.ScreenMaxY, (O.WorldSpeed * 1.05), 5, true, false, "static", 0)
 	
