@@ -4,6 +4,7 @@ scenechanges:
 
 on game over: 
 	låt player ramla ned på gräset, och inte bara frysa fast när man dör
+	shake the screen
 
 fixes:
 	scoredisplay mitt på skärmen, 25% ned (ca) från toppen
