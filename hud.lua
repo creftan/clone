@@ -45,15 +45,20 @@ function hud.createHud(event,group)
 	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,nil,14)
 	hud.scoreText.x = 80
 
+	function hud.getScore(score)
+		hud.scoreText.text = score
+	end
+
 	function hud.gameOverBoxMove()
-		hud.gameOverTransition = transition.to(hud.gameOver,{time=100,y=60,transition=easing.InOutQuad,onComplete=function()
-			hud.gameOverTransition2 = transition.to(hud.gameOver,{time=100,y=50,transition=easing.InOutQuad})
+		hud.gameOverTransition = transition.to(hud.gameOver,{time=80,y=90,transition=easing.InOutQuad,onComplete=function()
+			hud.gameOverTransition2 = transition.to(hud.gameOver,{time=80,y=80,transition=easing.InOutQuad})
 		end})
 	end
 
 	hud.gameOver = display.newImage(hud.hudGroup,"/art/Ingame/gameoverbox.png",0,0)
-	hud.gameOver.xScale, hud.gameOver.yScale = .7,.7
-	hud.gameOver.x, hud.gameOver.y = 50,-50
+	--hud.gameOver.xScale, hud.gameOver.yScale = .7,.7
+	hud.gameOver.x, hud.gameOver.y = 53,-50
+	--hud.gameOver:addEventListener("tap",hud.returntrue)
 	return hud.createHud
 end
 
@@ -70,6 +75,7 @@ function hud.deleteHud(event,group)
 		display.remove(buttonList[i])
 		display.remove(group)
 	end
+	--hud.gameOver:removeEventListener("tap",hud.returntrue)
 	gameOverTransition2 = nil
 	gameOverTransition = nil
 end	

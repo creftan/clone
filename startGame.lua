@@ -27,7 +27,7 @@ local ScoreBoard = display.newText(string, 10, 10, native.systemFont, 10)
 
 local function PrintScore(Score)
     print ("Score  "..Score)
-    ScoreBoard.text = Score
+    hud.getScore(Score)
 end
 
 
