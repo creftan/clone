@@ -44,7 +44,12 @@ ObjectManager:Init(Physics, -70, CamMaxX, -50, CamMaxY, WorldSpeed, DayNightSpee
 local function Update (event)
         ObjectManager:Update(event);
 end
-Runtime:addEventListener( "enterFrame", Update )
+--Runtime:addEventListener( "enterFrame", Update )
+--FULFIX 
+timer.performWithDelay(1,function()
+	Runtime:addEventListener( "enterFrame", Update )
+end)
+
 -------------------------------------------------------
 
  
