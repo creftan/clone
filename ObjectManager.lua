@@ -73,10 +73,7 @@ function O:CreateObsticles()
 
 
 --INFO!
-	HudGroup = display.newGroup() -- Displaygroup that always is at top
-	local HudGroup = O.Core:GetHudGroup();
 
-	hud.createHud(nil,HudGroup)
 
 	
 	--- Important Function!!!!!
@@ -95,6 +92,7 @@ function O:Update(event)
 			O.Core:StopGame()
 			O.Player:DestroyPLayer();
 			O.Core:DeleteDisplayGroups();
+			hud.deleteHud(HudGroup);
 			O:StartingUpGame();
 		 end, 1 )
 	else
@@ -106,6 +104,10 @@ function O:Update(event)
 end
 
 function O:StartingUpGame()
+	HudGroup = display.newGroup() -- Displaygroup that always is at top
+	local HudGroup = O.Core:GetHudGroup();
+
+	hud.createHud(nil,HudGroup)
 	O.Core:StartGame()
 	O:CreateObsticles();
 	timer.performWithDelay( 1, function() 
