@@ -1,17 +1,28 @@
 local hud = {}
 
-function hud.hudFunctions()
-	local function forSfx(event)
-		print("Music")
-	end
 
-	local function forMusic(event)
-		print("Music")
-	end
-end
 
 function hud.createHud(event,group)
---[[	hud.hudFunctions(forMusic,forSfx)
+	
+		local function forSfx(event)
+			if event.phase == "began" then
+				print("sfx")
+			elseif event.phase == "ended" then
+				--do nothing
+			end
+		end
+
+		local function forMusic(event)
+			if event.phase == "began" then
+				print("music")
+			elseif event.phase == "ended" then
+				--do nothing
+			end
+		end
+	
+		local function returntrue()
+			return true
+		end
 	local hudList = {
 				{
 				listener=forMusic,
@@ -29,11 +40,11 @@ function hud.createHud(event,group)
 		hudPic.x = hudPic.width*i*1.1
 		hudGroup.xScale, hudGroup.yScale = 3,3
 
-		hudGroup:addEventListener("tap",hudList[i].listener)
+		hudGroup:addEventListener("touch",hudList[i].listener)
+		hudGroup:addEventListener("tap",returntrue)
 		group:insert(hudGroup)
 
 	end
-]]
 end
 
 
