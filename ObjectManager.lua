@@ -1,6 +1,6 @@
 local O = {};
 
-
+hud = require("hud");
 O.Core = require("CoreMechanics");
 O.Player = require("Player");
 
@@ -73,8 +73,10 @@ function O:CreateObsticles()
 
 
 --INFO!
-	-- HudGroup = Displaygroup that always is at top
-	--local HudGroup = O.Core:GetHudGroup();
+	HudGroup = display.newGroup() -- Displaygroup that always is at top
+	local HudGroup = O.Core:GetHudGroup();
+
+	hud.createHud(nil,HudGroup)
 
 	
 	--- Important Function!!!!!
