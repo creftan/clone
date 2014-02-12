@@ -24,11 +24,8 @@ function O:Init(PhysPointer, ScreenMinX, ScreenMaxX, ScreenMinY, ScreenMaxY, Wor
 	O.WorldSpeed = WorldSpeed;
 	O.Core:InitCore(PhysPointer, ScreenMinX, ScreenMaxX, ScreenMinY, ScreenMaxY, WorldSpeed, OverlayTimerSpeed);
 	O.Player:Init(PhysPointer, O.Core, ScreenMinX, ScreenMaxX, ScreenMinY, ScreenMaxY, Gravity, FlappBoost );
-	O.Player:CreatePlayer(0, 0);
 
-	O.Core:PauseGame();
-
-	timer.performWithDelay( 1000, function() O.Core:StartGame(); end, 1 )
+	O:StartingUpGame();
 	
 
 
@@ -69,7 +66,7 @@ function O:CreateObsticles()
 	O.Core:CreateTimeObject( 2, "/art/Pipe1.png", "/art/Pipe1.png", ObstStartPosX, Obj1Y, O.WorldSpeed, 4, true, false, "static", 0, 10, 1, 0)
 	O.Core:CreateTimeObject( 2, "/art/Pipe2.png", "/art/Pipe2.png", ObstStartPosX, Obj2Y, O.WorldSpeed, 4, true, false, "static", 0, 10, 1, 0)
 
-	O.Core:CreateTileObject( "/art/startscreen/ground_top_2.png", "/art/startscreen/ground_top_2.png", (ObstStartPosX + 300), O.ScreenMaxY, (O.WorldSpeed * 1.05), 5, true, false, "static", 0)
+	O.Core:CreateTileObject( "/art/ingame/grass.png", "/art/ingame/grass.png", (ObstStartPosX + 300), O.ScreenMaxY, (O.WorldSpeed * 1.05), 5, true, false, "static", 0)
 	
 
 	--O.Core:CreateTileObject( "Pipe2.png", "Pipe2.png", ObstStartPosX, Obj2Y, O.WorldSpeed, 2, false, false, "static", 0)
@@ -96,11 +93,7 @@ function O:Update(event)
 			O.Core:StopGame()
 			O.Player:DestroyPLayer();
 			O.Core:DeleteDisplayGroups();
-			O.Core:StartGame()
-			O.Player:CreatePlayer(0, 0);
-			O.Core:PauseGame();
-			timer.performWithDelay( 1000, function() O.Core:StartGame(); end, 1 )
-
+			O:StartingUpGame();
 		 end, 1 )
 	else
 		O.Core:Update(event);
@@ -108,6 +101,16 @@ function O:Update(event)
 		O:CreateObsticles();
 	end
 
+end
+
+function O:StartingUpGame()
+	O.Core:StartGame()
+	O:CreateObsticles();
+	timer.performWithDelay( 1, function() 
+		O.Player:CreatePlayer(0, 0);
+		O.Core:PauseGame();
+		O.Core.GameReadyToRun = true;
+	 end, 1 )
 end
 
 

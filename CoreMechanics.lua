@@ -36,6 +36,7 @@ C.LayerDisplayGroupsNum = 0;
 C.HudDisplayGroup = display.newGroup(); 
 
 C.GameRunning = false;
+C.GameReadyToRun = false;
 
 
 function C:InitCore(PhysPointer, ScreenMinX, ScreenMaxX, ScreenMinY, ScreenMaxY, WorldSpeed, OverlayTimerSpeed)
@@ -360,6 +361,14 @@ end
 
 function C.GetIfGameIsRunning()
 	return C.GameRunning;
+end
+
+function C.SetGameReadyness(ReadyToRun)
+	C.GameReadyToRun = ReadyToRun;
+end
+
+function C.GetIfGameIsReadyToRun()
+	return C.GameReadyToRun;
 end
 
 
