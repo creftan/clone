@@ -117,6 +117,7 @@ end
 function O:StartingUpGame()
 	HudGroup = display.newGroup() -- Displaygroup that always is at top
 	local HudGroup = O.Core:GetHudGroup();
+	HudGroup.x = _W*.16
 	HudGroup.y = _H*.14
 	hud.createHud(nil,HudGroup)
 	O.Core:StartGame()

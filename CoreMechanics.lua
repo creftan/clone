@@ -362,18 +362,21 @@ function C:StopGame()
 	--C.Physics.stop();
 end
 
-function C.GetIfGameIsRunning()
+function C:GetIfGameIsRunning()
 	return C.GameRunning;
 end
 
-function C.SetGameReadyness(ReadyToRun)
+function C:SetGameReadyness(ReadyToRun)
 	C.GameReadyToRun = ReadyToRun;
 end
 
-function C.GetIfGameIsReadyToRun()
+function C:GetIfGameIsReadyToRun()
 	return C.GameReadyToRun;
 end
 
+function C:GetTimeCycle()
+	return C.OverLayAlpha;
+end
 
 function C:Update(event)
 
@@ -381,7 +384,6 @@ function C:Update(event)
 	C.Timers.DeltaTimeTick = 0;
 	if C.GameRunning == true then
 		C.Timers.DeltaTimeTick = C.Timers.DeltaTime;
-		print(C.Timers.DeltaTimeTick)
 		--ObjectUpdate Movement
 		for i=1,C.ObjectCount do
 			C.ObjectList[i].X = C.ObjectList[i].X - (C.ObjectList[i].MoveSpeed * C.Timers.DeltaTime);
