@@ -92,14 +92,17 @@ function O:Update(event)
 	if PlayerCollide == true then
 		O.Core:PauseGame();
 		hud.gameOverBoxMove();
-		timer.performWithDelay( 1000, function()
+		function O.restartGame()
 			O.Core:StopGame()
 			O.Player:DestroyPLayer();
 			O.Core:DeleteDisplayGroups();
-			hud.deleteHud(HudGroup);
 			
+			hud.deleteHud(HudGroup);
+
 			O:StartingUpGame();
-		 end, 1 )
+			Runtime:removeEventListener("tap",O.restartGame)
+		end
+		Runtime:addEventListener("tap",O.restartGame)
 	else
 		O.Core:Update(event);
 		O.Player:Update();
