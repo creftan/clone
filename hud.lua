@@ -8,14 +8,14 @@ end
 function hud.forMusic(event)
 	print("music")
 end
+	
+function hud.returntrue()
+	return true
+end
 
 function hud.createHud(event,group)
-	
-	local function returntrue()
-		return true
-	end
-	
-	local hudList = {
+
+	hudList = {
 				{
 				listener=hud.forMusic,
 				pic="art/Buttons/b_note.png",
@@ -25,24 +25,39 @@ function hud.createHud(event,group)
 				pic="art/Buttons/b_speaker.png",
 				},
 			}
-	for i=1,2 do
-		local hudGroup = display.newGroup()
 
-		hudPic = display.newImage(hudGroup,hudList[i].pic,0,0,50,50)
+	buttonList = {}
+	
+	for i=1,#hudList do
+		hud.hudGroup = display.newGroup()
+		hudPic = display.newImage(hud.hudGroup,hudList[i].pic,0,0,50,50)
 		hudPic.x = hudPic.width*i*1.1
-		hudGroup.xScale, hudGroup.yScale = 3,3
+		hud.hudGroup.xScale, hud.hudGroup.yScale = 3,3
+		
+		buttonList[#buttonList+1] = hud.hudGroup
 
-		hudGroup:addEventListener("tap",hudList[i].listener)
-		hudGroup:addEventListener("touch",returntrue)
-		group:insert(hudGroup)
+		hud.hudGroup:addEventListener("tap",hudList[i].listener)
+		hud.hudGroup:addEventListener("touch",hud.returntrue)
+		group:insert(hud.hudGroup)
 
 	end
 	return hud.createHud
 end
 
+function hud.deleteHud(event,group)
+	print("Deletes ")
 
-function hud.deleteHud(event)
-	display.remove(hudTest)
-end
+	for i=1,#hudList do
+		buttonList[i]:removeEventListener("tap",hudList[i].listener)
+		buttonList[i]:removeEventListener("touch",hud.returntrue)
+		display.remove(buttonList[i])
+		display.remove(group)
+	end
+
+
+end	
+
+
+
 
 return hud
