@@ -299,6 +299,9 @@ function C:UpdateDeltaTime(event)
 	C.Timers.NewEventTime = event.time;
     C.Timers.DeltaTime = (C.Timers.NewEventTime - C.Timers.PrevEventTime) * 0.001;
     C.Timers.PrevEventTime = C.Timers.NewEventTime;
+    if C.Timers.DeltaTime > 0.05 then
+    	C.Timers.DeltaTime = 0.05;
+    end
 end
 
 function C:GetDeltaTime()
@@ -378,6 +381,7 @@ function C:Update(event)
 	C.Timers.DeltaTimeTick = 0;
 	if C.GameRunning == true then
 		C.Timers.DeltaTimeTick = C.Timers.DeltaTime;
+		print(C.Timers.DeltaTimeTick)
 		--ObjectUpdate Movement
 		for i=1,C.ObjectCount do
 			C.ObjectList[i].X = C.ObjectList[i].X - (C.ObjectList[i].MoveSpeed * C.Timers.DeltaTime);
