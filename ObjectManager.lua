@@ -91,12 +91,13 @@ function O:Update(event)
 	local PlayerCollide = O.Player:GetPlayerCollisionData()
 	if PlayerCollide == true then
 		O.Core:PauseGame();
-
+		hud.gameOverBoxMove();
 		timer.performWithDelay( 1000, function()
 			O.Core:StopGame()
 			O.Player:DestroyPLayer();
 			O.Core:DeleteDisplayGroups();
 			hud.deleteHud(HudGroup);
+			
 			O:StartingUpGame();
 		 end, 1 )
 	else
@@ -110,7 +111,7 @@ end
 function O:StartingUpGame()
 	HudGroup = display.newGroup() -- Displaygroup that always is at top
 	local HudGroup = O.Core:GetHudGroup();
-
+	--HudGroup.y = _H*.1
 	hud.createHud(nil,HudGroup)
 	O.Core:StartGame()
 	O:CreateObsticles();
