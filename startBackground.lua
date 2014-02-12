@@ -39,17 +39,17 @@ local sceneView = self.view
 		p.position2 = 0 
 		p.position3 = 0 
 
-	logo = display.newImageRect("art/startscreen/logo.png", 226,60)
+	logo = display.newImageRect("art/startScreen/logo.png", 226,60)
 	logo.xScale = 2
 	logo.yScale = 2
 	logo.x = _W*.5
-	logo.y = _H*.2
+	logo.y = _H*.15
 	
-	copy = display.newImageRect("art/startscreen/copyright.png", 113,30)
+	copy = display.newImageRect("art/startScreen/copyright.png", 113,30)
 	copy.xScale = 1
 	copy.yScale = 1
 	copy.x = _W*.5
-	copy.y = _H
+	copy.y = _H*.9
 	
 
 

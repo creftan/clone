@@ -35,7 +35,7 @@ function P:CreatePlayer(PosX, PosY)
 	local PosX = P.ScreenMaxX*0.25;
 	local PosY = P.ScreenMaxY*0.5;
 	
-	P.Player = display.newImageRect("/art/dogesmall.png",30,26);
+	P.Player = display.newImageRect("art/Dogesmall.png",30,26);
 	P.Player.x = PosX;
 	P.Player.y = PosY;
 	P.Player.PreY = PosY;

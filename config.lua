@@ -3,7 +3,7 @@ application = {
 	content = {        --Small     Big
 		width = 320,   --160       320
 		height = 480,  --240       480
-		scale = "letterBox",
+		scale = "zoomEven",
 		fps = 60,
 		
 		--[[

@@ -68,7 +68,7 @@ function hud.createHud(event,group)
 	end
 	hud.gameOverGroup = display.newGroup()
 	hud.hudGroup:insert(hud.gameOverGroup)
-	hud.gameOver = display.newImage(hud.gameOverGroup,"/art/Ingame/gameoverbox.png",0,0)
+	hud.gameOver = display.newImage(hud.gameOverGroup,"art/Ingame/gameoverbox.png",0,0)
 	--hud.gameOver.xScale, hud.gameOver.yScale = .7,.7
 	hud.gameOver.x, hud.gameOver.y = 53,-80
 	--hud.gameOver:addEventListener("tap",hud.returntrue)
