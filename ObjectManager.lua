@@ -122,7 +122,7 @@ function O:StartingUpGame()
 	hud.createHud(nil,HudGroup)
 	O.Core:StartGame()
 	O:CreateObsticles();
-	timer.performWithDelay( 1, function() 
+	timer.performWithDelay( 50, function() 
 		O.Player:CreatePlayer(0, 0);
 		O.Core:PauseGame();
 		O.Core.GameReadyToRun = true;

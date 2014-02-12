@@ -44,7 +44,7 @@ function hud.createHud(event,group)
 		hud.hudGroup = display.newGroup()
 		hudPic = display.newImage(hud.hudGroup,hudList[i].pic,0,0,50,50)
 		hudPic.x = hudPic.width*i*1.1
-		hud.hudGroup.x = -50
+		hud.hudGroup.x = -40
 		hud.hudGroup.xScale, hud.hudGroup.yScale = 2,2
 		
 		buttonList[#buttonList+1] = hud.hudGroup
@@ -56,7 +56,7 @@ function hud.createHud(event,group)
 	end
 
 	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,nil,14)
-	hud.scoreText.x = 80
+	hud.scoreText.x = 70
 
 	function hud.getScore(score)
 		hud.scoreText.text = score
@@ -71,7 +71,7 @@ function hud.createHud(event,group)
 	hud.hudGroup:insert(hud.gameOverGroup)
 	hud.gameOver = display.newImage(hud.gameOverGroup,"art/Ingame/gameoverbox.png",0,0)
 	--hud.gameOver.xScale, hud.gameOver.yScale = .7,.7
-	hud.gameOver.x, hud.gameOver.y = 79,-90
+	hud.gameOver.x, hud.gameOver.y = 74,-90
 	--hud.gameOver:addEventListener("tap",hud.returntrue)
 
 	for i=1,#socialList do
@@ -79,7 +79,7 @@ function hud.createHud(event,group)
 		hud.socialPics = display.newImage(hud.socialGroup,socialList[i].pic,0,0)
 		hud.socialPics.x = hud.socialPics.width*i*2.1
 
-		hud.socialGroup.x,hud.socialGroup.y = 16,-50
+		hud.socialGroup.x,hud.socialGroup.y = 10,-50
 		socialButtonList[#socialButtonList+1] = hud.socialGroup
 		hud.gameOverGroup:insert(hud.socialGroup)
 
