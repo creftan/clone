@@ -1,0 +1,15 @@
+
+scenechanges: 
+	fade out in mellan startscreen och gamescreen.
+
+on game over: 
+	låt player ramla ned på gräset, och inte bara frysa fast när man dör
+
+fixes:
+	scoredisplay mitt på skärmen, 25% ned (ca) från toppen
+	spara high-score
+	visa score och highscore på game over skärmen.
+	fixa medals (vi måste sätta medalj-gränser)
+	random sentences ( "much score", "very progress) på poängtagning (fade in/ut)
+	 
+
