@@ -13,21 +13,33 @@ function hud.returntrue()
 	return true
 end
 
+function hud.forFacebook(event)
+	if event.phase == "ended" then
+		print("Facebook")
+	end
+end
+
+function hud.forTwitter(event)
+	if event.phase == "ended" then
+		print("forTwitter")
+	end
+end
+
 function hud.createHud(event,group)
+	socialList = {
+				{listener=hud.forFacebook, 	pic="art/face.png"},
+				{listener=hud.forTwitter,	pic="art/twit.png"},
+	}
 
 	hudList = {
-				{
-				listener=hud.forMusic,
-				pic="art/Buttons/b_note.png",
-				},
-				{
-				listener=hud.forSfx,
-				pic="art/Buttons/b_speaker.png",
-				},
+				{listener=hud.forMusic,	pic="art/Buttons/b_note.png"},
+				{listener=hud.forSfx,	pic="art/Buttons/b_speaker.png"},
 			}
 
 	buttonList = {}
 	
+	socialButtonList = {}
+
 	for i=1,#hudList do
 		hud.hudGroup = display.newGroup()
 		hudPic = display.newImage(hud.hudGroup,hudList[i].pic,0,0,50,50)
@@ -50,15 +62,30 @@ function hud.createHud(event,group)
 	end
 
 	function hud.gameOverBoxMove()
-		hud.gameOverTransition = transition.to(hud.gameOver,{time=80,y=90,transition=easing.InOutQuad,onComplete=function()
-			hud.gameOverTransition2 = transition.to(hud.gameOver,{time=80,y=80,transition=easing.InOutQuad})
+		hud.gameOverTransition = transition.to(hud.gameOverGroup,{time=80,y=160,transition=easing.InOutQuad,onComplete=function()
+			hud.gameOverTransition2 = transition.to(hud.gameOverGroup,{time=80,y=150,transition=easing.InOutQuad})
 		end})
 	end
-
-	hud.gameOver = display.newImage(hud.hudGroup,"/art/Ingame/gameoverbox.png",0,0)
+	hud.gameOverGroup = display.newGroup()
+	hud.hudGroup:insert(hud.gameOverGroup)
+	hud.gameOver = display.newImage(hud.gameOverGroup,"/art/Ingame/gameoverbox.png",0,0)
 	--hud.gameOver.xScale, hud.gameOver.yScale = .7,.7
-	hud.gameOver.x, hud.gameOver.y = 53,-50
+	hud.gameOver.x, hud.gameOver.y = 53,-80
 	--hud.gameOver:addEventListener("tap",hud.returntrue)
+
+	for i=1,#socialList do
+		hud.socialGroup = display.newGroup()
+		hud.socialPics = display.newImage(hud.socialGroup,socialList[i].pic,0,0)
+		hud.socialPics.x = hud.socialPics.width*i*2.1
+
+		hud.socialGroup.x,hud.socialGroup.y = -10,-40
+		socialButtonList[#socialButtonList+1] = hud.socialGroup
+		hud.gameOverGroup:insert(hud.socialGroup)
+
+		hud.socialGroup:addEventListener("touch",socialList[i].listener)
+		hud.socialGroup:addEventListener("tap",hud.returntrue)
+	end
+
 	return hud.createHud
 end
 
@@ -74,6 +101,13 @@ function hud.deleteHud(event,group)
 		buttonList[i]:removeEventListener("touch",hud.returntrue)
 		display.remove(buttonList[i])
 		display.remove(group)
+	end
+
+	for i=1,#socialList do
+		socialButtonList[i]:removeEventListener("tap",hud.returntrue)
+		socialButtonList[i]:removeEventListener("touch",socialList[i].listener)
+		display.remove(socialButtonList)
+		display.remove(socialGroup)
 	end
 	--hud.gameOver:removeEventListener("tap",hud.returntrue)
 	gameOverTransition2 = nil
