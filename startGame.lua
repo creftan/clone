@@ -10,6 +10,7 @@ function scene:createScene(e)
 -------------------------------------------
 local Physics     = require( "physics" )
 local ObjectManager = require("ObjectManager")
+local hud = require("hud")
                     --require( "sprite" )
 Physics.start();
 --Physics.setDrawMode( "hybrid" );
