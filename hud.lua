@@ -1,5 +1,5 @@
 local hud = {}
-
+local socialModule = require "socialModule"
 
 function hud.forSfx(event)
 	print("sfx")
@@ -15,13 +15,13 @@ end
 
 function hud.forFacebook(event)
 	if event.phase == "ended" then
-		print("Facebook")
+		socialModule.sendfbAppCapture("pic.png","FUCKING AWESOME!\ntest the app here: http://fuckyou.com/")
 	end
 end
 
 function hud.forTwitter(event)
 	if event.phase == "ended" then
-		print("forTwitter")
+		socialModule.sendTweetAppCapture("pic.png","FUCKING AWESOME!\ntest the app here: http://fuckyou.com/")
 	end
 end
 
