@@ -102,7 +102,10 @@ function O:Update(event)
 			O:StartingUpGame();
 			Runtime:removeEventListener("tap",O.restartGame)
 		end
-		Runtime:addEventListener("tap",O.restartGame)
+		timer.performWithDelay(1000,function()
+			Runtime:addEventListener("tap",O.restartGame)
+		end)
+		
 	else
 		O.Core:Update(event);
 		O.Player:Update();
