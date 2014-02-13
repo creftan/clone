@@ -39,7 +39,7 @@ function O:CreateObsticles()
 	local ObstCount = 0;
 	local ObstWidth = 52;
 	local ObstHeight = 320;
-	local ObstSpace = 95 --115;
+	local ObstSpace = 98 --95 
 	local ObstStartPosX = O.ScreenMaxX  + (ObstWidth);
 	local ObstStartPosY = O.ScreenMaxY*0.5;
 	local ObstSpeed = 85
@@ -55,15 +55,15 @@ function O:CreateObsticles()
     --Creating Time-Objects, This creates the object in intrevals: O.Core:CreateTimeObject(First value now is the time interwall in sec between object creation, the rest has the same parameters as above) Extra: 3 last values is SinYMovement: How High and low it moves, SinYSpeed: self explainible, SinYStart: where to start on a sincurve.
   
   	-- Tricket med att få Tiles att funka är att skapa dem väldigt mycket åt höger, dock så är det mer prestanda ju mer åt höger man skapar dem
-    O.Core:CreateTileObject( "art/Backdrop/backdropDay.png", "art/Backdrop/backdropNight.png", 0, (O.ScreenMaxY * 0.4), 0, 1, false, false, "static", 0)
- 	O.Core:CreateTileObject( "art/Ingame/bushes.png", "art/Ingame/bushes.png", (ObstStartPosX + 300), (O.ScreenMaxY*0.735), (O.WorldSpeed * 0.5),3, false, false, "static", 0)
+    O.Core:CreateTileObject( "art/Backdrop/backdropDay.png", "art/Backdrop/backdropNight.png", 0, (O.ScreenMaxY * 0.4), 1, 1, false, false, "static", 0)
+ 	O.Core:CreateTileObject( "art/Ingame/bushes.png", "art/Ingame/bushesNight.png", (ObstStartPosX + 300), (O.ScreenMaxY*0.735), (O.WorldSpeed * 0.5),3, false, false, "static", 0)
  	O.Core:CreateTileObject( "art/Ingame/clouds.png", "art/Ingame/clouds.png", (ObstStartPosX + 300), (O.ScreenMaxY*0), (O.WorldSpeed * 0.2),2, false, false, "static", 0)
 
  	local DayNightValue = O.Core:GetTimeCycle()
  	DayNightValue = DayNightValue*DayNightValue; ---- för att svårighetsgraden ska öka exponentiellt istället för linjärt
  	--print (DayNightValue)
- 	O.Core:CreateTimeObject( 20, "art/Ingame/mountain.png", "art/Ingame/mountain.png", ObstStartPosX, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.3), 2, false, false, "static", 0, 0, 0, 0)
-	O.Core:CreateTimeObject( 15, "art/Ingame/mountain_2.png", "art/Ingame/mountain_2.png", ObstStartPosX, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.3), 1, false, false, "static", 0, 0, 0, 0)
+ 	O.Core:CreateTimeObject( 20, "art/Ingame/mountain.png", "art/Ingame/mountainNight.png", ObstStartPosX, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.3), 2, false, false, "static", 0, 0, 0, 0)
+	O.Core:CreateTimeObject( 15, "art/Ingame/mountain_2.png", "art/Ingame/mountain_2Night.png", ObstStartPosX, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.35), 1, false, false, "static", 0, 0, 0, 0)
 	
 	local RandomPosXOffset1 = math.random(-45,65) * DayNightValue;
 	local RandomPosXOffset2 = math.random(-65,45)* -1 * DayNightValue; --- omkastning pga dålig random funktion
@@ -75,7 +75,7 @@ function O:CreateObsticles()
 
 
 
-	O.Core:CreateTileObject( "art/Ingame/grass.png", "art/Ingame/grass.png", (ObstStartPosX + 300), O.ScreenMaxY, (O.WorldSpeed * 1.05), 5, true, false, "static", 0)
+	O.Core:CreateTileObject( "art/Ingame/grass.png", "art/Ingame/grassNight.png", (ObstStartPosX + 300), O.ScreenMaxY, (O.WorldSpeed * 1.05), 5, true, false, "static", 0)
 	
 
 	--O.Core:CreateTileObject( "Pipe2.png", "Pipe2.png", ObstStartPosX, Obj2Y, O.WorldSpeed, 2, false, false, "static", 0)
