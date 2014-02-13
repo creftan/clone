@@ -35,9 +35,18 @@ function P:CreatePlayer(PosX, PosY)
 	local PosX = P.ScreenMaxX*0.25;
 	local PosY = P.ScreenMaxY*0.5;
 	
-	P.Player = display.newImageRect("art/Dogesmall.png",30,26);
+	P.Player = display.newGroup()
+
+	P.Player.doge = display.newImageRect(P.Player,"art/Dogesmall.png",30,26);
+	P.Player.tail = display.newImageRect(P.Player,"art/doge_tail.png",64,64)
+
+	P.Player.tail.x = -15
+	P.Player.tail.y = 6
+	
 	P.Player.x = PosX;
 	P.Player.y = PosY;
+	
+
 	P.Player.PreY = PosY;
 	local Radius = ((P.Player.width + P.Player.height) * 0.15)
 	P.Physics.addBody( P.Player  ,"dynamic", { density = P.Density, friction = P.Friction, bounce = P.Bounce, radius = Radius } );
@@ -46,6 +55,7 @@ function P:CreatePlayer(PosX, PosY)
 	P.Player.preCollision = GlobalPreCollisionFunction
 	P.Player:addEventListener( "preCollision", P.Player )
 	P.Core:InsertInDisplayGroup( P.Player, P.Player , 10 );
+	--P.Core:InsertInDisplayGroup( P.Player.tail, P.Player.tail , 10 );
 	print("Player Created")
 end
 
@@ -59,7 +69,7 @@ function P:DestroyPLayer()
 	end
 end
 
-function P:Rotate()
+function P:Rotate(counter)
 
 	if P.Player ~= nil then
 		local DeltaTime = P.Core:GetDeltaTime();
@@ -71,6 +81,9 @@ function P:Rotate()
 
 		P.Player:rotate(Rotate);
 		P.Player.PreY = P.Player.y;
+		print (counter.." counter")
+		P.Player.tail.rotation = math.sin(counter)*20	
+
 
 		if P.Player.rotation > 75 then
 			P.Player.rotation = 75;
@@ -79,13 +92,27 @@ function P:Rotate()
 			P.Player.rotation = -30;
 		end
 
+		
 	end
 end
+
+local counter = 0  
 
 function P:Update()
 	local GameRuns = P.Core:GetIfGameIsRunning();
 	if GameRuns == true then
-		P:Rotate();
+
+		
+		counter = counter + .5
+		
+		if counter > 360 then counter = 0 
+		end
+		
+		P:Rotate(counter);
+
+
+		
+
 	end
 end
 

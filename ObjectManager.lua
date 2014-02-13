@@ -68,10 +68,10 @@ function O:CreateObsticles()
 	local RandomPosXOffset1 = math.random(-45,65) * DayNightValue;
 	local RandomPosXOffset2 = math.random(-65,45)* -1 * DayNightValue; --- omkastning pga dålig random funktion
 
-	O.Core:CreateTimeObject( 2, "art/ingame/longcatbody1.png", "art/ingame/longcatbody1Night.png", ObstStartPosX + RandomPosXOffset1, Obj1Y, O.WorldSpeed, 4, true, false, "static", 0, 10*DayNightValue, 1*DayNightValue, 0)
-	O.Core:CreateTimeObject( 2, "art/ingame/longcatbody2.png", "art/ingame/longcatbody2Night.png", ObstStartPosX + RandomPosXOffset2, Obj2Y, O.WorldSpeed, 4, true, false, "static", 0, 10*DayNightValue, 1*DayNightValue, 0)
-	O.Core:CreateTimeObject( 2, "art/ingame/longcatarm1.png", "art/ingame/longcatarm1Night.png", ObstStartPosX-35 + RandomPosXOffset1, Obj1Y+110, O.WorldSpeed, 4, true, false, "static", 0, 10*DayNightValue, 1*DayNightValue, 0)
-	O.Core:CreateTimeObject( 2, "art/ingame/longcatarm2.png", "art/ingame/longcatarm2Night.png", ObstStartPosX-35 + RandomPosXOffset2, Obj2Y-110, O.WorldSpeed, 4, true, false, "static", 0, 10*DayNightValue, 1*DayNightValue, 0)
+	O.Core:CreateTimeObject( 2, "art/ingame/longcatbody1.png", "art/ingame/longcatbody1Night.png", ObstStartPosX , Obj1Y, O.WorldSpeed, 4, true, false, "static", 0, 10*DayNightValue, 1*DayNightValue, 0)
+	O.Core:CreateTimeObject( 2, "art/ingame/longcatbody2.png", "art/ingame/longcatbody2Night.png", ObstStartPosX , Obj2Y, O.WorldSpeed, 4, true, false, "static", 0, 10*DayNightValue, 1*DayNightValue, 0)
+	O.Core:CreateTimeObject( 2, "art/ingame/longcatarm1.png", "art/ingame/longcatarm1Night.png", ObstStartPosX-35, Obj1Y+110, O.WorldSpeed, 4, true, false, "static", 0, 10*DayNightValue, 1*DayNightValue, 0)
+	O.Core:CreateTimeObject( 2, "art/ingame/longcatarm2.png", "art/ingame/longcatarm2Night.png", ObstStartPosX-35, Obj2Y-110, O.WorldSpeed, 4, true, false, "static", 0, 10*DayNightValue, 1*DayNightValue, 0)
 
 
 
