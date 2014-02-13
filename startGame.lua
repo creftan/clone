@@ -11,11 +11,12 @@ function scene:createScene(e)
 local Physics     = require( "physics" )
 local ObjectManager = require("ObjectManager")
 local hud = require("hud")
+local aud = require("audioo")
                     --require( "sprite" )
 Physics.start();
 --Physics.setDrawMode( "hybrid" );
 -------------------------------------------
-
+aud.loadsounds(soundtable)
 
 local string = "0"
 local ScoreBoard = display.newText(string, 10, 10, native.systemFont, 10)

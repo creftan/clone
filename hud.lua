@@ -1,4 +1,5 @@
 local hud = {}
+local soundOn = true
 local socialModule = require "socialModule"
 
 function hud.makeRandomSentence()
@@ -14,7 +15,15 @@ end
 
 
 function hud.forSfx(event)
-	print("sfx")
+	if event.phase == "ended" then
+		if soundOn then
+			soundOn = false
+			aud.setsoundvolume(0)
+		else 
+			soundOn = true
+			aud.setsoundvolume(1)
+		end
+	end
 end
 
 function hud.forMusic(event)
@@ -32,6 +41,7 @@ function hud.forFacebook(event)
 end
 
 function hud.forTwitter(event)
+
 	if event.phase == "ended" then
 		socialModule.sendTweetAppCapture("pic.png","FUCKING AWESOME!\ntest the app here: http://fuckyou.com/")
 	end
@@ -55,14 +65,14 @@ function hud.createHud(event,group)
 	for i=1,#hudList do
 		hud.hudGroup = display.newGroup()
 		
-		hudPic = display.newImage(hud.hudGroup,hudList[i].pic,0,0)
-		hudPic.x = 20 + hudPic.width*(i-1)*2.5
-		hudPic.xScale, hudPic.yScale = 2,2
+		hud.hudPic = display.newImage(hud.hudGroup,hudList[i].pic,0,0)
+		hud.hudPic.x = 20 + hud.hudPic.width*(i-1)*2.5
+		hud.hudPic.xScale, hud.hudPic.yScale = 2,2
 	
-		buttonList[#buttonList+1] = hud.hudGroup
+		buttonList[#buttonList+1] = hud.hudPic
 
-		hud.hudGroup:addEventListener("tap",hudList[i].listener)
-		hud.hudGroup:addEventListener("touch",hud.returntrue)
+		hud.hudPic:addEventListener("touch",hudList[i].listener)
+		hud.hudPic:addEventListener("tap",hud.returntrue)
 		group:insert(hud.hudGroup)
 
 	end
@@ -116,7 +126,7 @@ end
 
 function hud.deleteHud(event,group)
 	print("Deletes ")
-
+	display.remove(hud.gameOverGroup)
 	for i=1,#hudList do
 		buttonList[i]:removeEventListener("tap",hudList[i].listener)
 		buttonList[i]:removeEventListener("touch",hud.returntrue)
