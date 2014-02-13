@@ -1,6 +1,18 @@
 local hud = {}
 local socialModule = require "socialModule"
 
+function hud.makeRandomSentence()
+	local list1 = {"SUCH","VERY","SO","MUCH","WOW"}
+	local list2 = {"SCORE","BRAVE","PROGRESS","DOGE","GOOD"}
+	local i1 = math.random(1,#list1)
+	local i2 = math.random(1,#list2)
+	local sentence = list1[i1].." "..list2[i2]
+
+	return sentence
+end 
+
+
+
 function hud.forSfx(event)
 	print("sfx")
 end
@@ -122,6 +134,7 @@ function hud.deleteHud(event,group)
 	gameOverTransition = nil
 end	
 
-
+sentence = hud.makeRandomSentence()
+print (sentence)
 
 return hud
