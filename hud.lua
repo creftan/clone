@@ -67,9 +67,9 @@ function hud.createHud(event,group)
 
 	end
 
-	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,"Origami Mommy",24)
+	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,"Origami Mommy",35)
 	hud.scoreText.x = _W*.5
-
+	hud.scoreText.y = _H*.15
 	function hud.getScore(score)
 		hud.scoreText.text = score
 	end
