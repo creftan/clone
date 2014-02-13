@@ -171,7 +171,7 @@ function C:CreateObject(MainImagePath, OverlayImagePath, PosX, PosY, MoveSpeed, 
 
 	C.ObjectList[C.ObjectCount] = Obj;
 	C:UpdateObjectPosition(C.ObjectCount, PosX, PosY );
-	C:InsertInDisplayGroup( C.ObjectList[C.ObjectCount].GraphMain, C.ObjectList[C.ObjectCount].GraphOverlay, Layer );
+	C:InsertInDisplayGroup( C.ObjectList[C.ObjectCount].GraphOverlay, C.ObjectList[C.ObjectCount].GraphMain, Layer );
 	return PosX, PosY, Obj.W, Obj.H;
 
 end
@@ -383,39 +383,44 @@ function C:Update(event)
 	C:UpdateDeltaTime(event);
 	C.Timers.DeltaTimeTick = 0;
 	if C.GameRunning == true then
-		C.Timers.DeltaTimeTick = C.Timers.DeltaTime;
-		--ObjectUpdate Movement
-		for i=1,C.ObjectCount do
-			C.ObjectList[i].X = C.ObjectList[i].X - (C.ObjectList[i].MoveSpeed * C.Timers.DeltaTime);
-			C:UpdateObjectPosition(i, C.ObjectList[i].X, C.ObjectList[i].Y);
-		end
-
-		--ObjectUpdate OutsideScreen Deletion
-		if C.ObjectCount > 0 then
-			for i=C.ObjectCount,1,-1 do
-				C:CheckObjectOutsideScreen(i);
-			end
-		end
-
-		--TileObjectUpdate Movement
-		for i=1,C.TileObjectCount do
-			C.TileObjectList[i].X = C.TileObjectList[i].X - (C.TileObjectList[i].MoveSpeed * C.Timers.DeltaTime);
-			C:UpdateTileObjectPosition(i, C.TileObjectList[i].X, C.TileObjectList[i].Y);
-		end
-
-		--TileObjectUpdate OutsideScreen RePositionation
-		if C.TileObjectCount > 0 then
-			for i=C.TileObjectCount,1,-1 do
-				C:CheckTileObjectOutsideScreen(i);
-			end
-		end
-
-		-- Overlay Time Cycle
-		C.OverlayTimer = C.OverlayTimer + (C.Timers.DeltaTime * C.OverlayTimerSpeed);
-		C.OverLayAlpha = (math.sin(C.OverlayTimer ) + 1) * 0.5
-		--print(C.OverLayAlpha , C.OverlayTimer )
-
+		C:GameRunningUpdate(event);
 	end
+
+end
+
+function C:GameRunningUpdate(event)
+
+	C.Timers.DeltaTimeTick = C.Timers.DeltaTime;
+	--ObjectUpdate Movement
+	for i=1,C.ObjectCount do
+		C.ObjectList[i].X = C.ObjectList[i].X - (C.ObjectList[i].MoveSpeed * C.Timers.DeltaTime);
+		C:UpdateObjectPosition(i, C.ObjectList[i].X, C.ObjectList[i].Y);
+	end
+
+	--ObjectUpdate OutsideScreen Deletion
+	if C.ObjectCount > 0 then
+		for i=C.ObjectCount,1,-1 do
+			C:CheckObjectOutsideScreen(i);
+		end
+	end
+
+	--TileObjectUpdate Movement
+	for i=1,C.TileObjectCount do
+		C.TileObjectList[i].X = C.TileObjectList[i].X - (C.TileObjectList[i].MoveSpeed * C.Timers.DeltaTime);
+		C:UpdateTileObjectPosition(i, C.TileObjectList[i].X, C.TileObjectList[i].Y);
+	end
+
+	--TileObjectUpdate OutsideScreen RePositionation
+	if C.TileObjectCount > 0 then
+		for i=C.TileObjectCount,1,-1 do
+			C:CheckTileObjectOutsideScreen(i);
+		end
+	end
+
+	-- Overlay Time Cycle
+	C.OverlayTimer = C.OverlayTimer + (C.Timers.DeltaTime * C.OverlayTimerSpeed);
+	C.OverLayAlpha = (math.sin(C.OverlayTimer ) + 1) * 0.5
+	--print(C.OverLayAlpha , C.OverlayTimer )
 
 end
 
