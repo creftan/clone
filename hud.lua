@@ -42,11 +42,11 @@ function hud.createHud(event,group)
 
 	for i=1,#hudList do
 		hud.hudGroup = display.newGroup()
-		hudPic = display.newImage(hud.hudGroup,hudList[i].pic,0,0,50,50)
-		hudPic.x = hudPic.width*i*1.1
-		hud.hudGroup.x = -40
-		hud.hudGroup.xScale, hud.hudGroup.yScale = 2,2
 		
+		hudPic = display.newImage(hud.hudGroup,hudList[i].pic,0,0)
+		hudPic.x = 20 + hudPic.width*(i-1)*2.5
+		hudPic.xScale, hudPic.yScale = 2,2
+	
 		buttonList[#buttonList+1] = hud.hudGroup
 
 		hud.hudGroup:addEventListener("tap",hudList[i].listener)
@@ -56,7 +56,7 @@ function hud.createHud(event,group)
 	end
 
 	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,nil,14)
-	hud.scoreText.x = 70
+	hud.scoreText.x = _W*.5
 
 	function hud.getScore(score)
 		hud.scoreText.text = score
@@ -68,19 +68,24 @@ function hud.createHud(event,group)
 		end})
 	end
 	hud.gameOverGroup = display.newGroup()
+	
 	hud.hudGroup:insert(hud.gameOverGroup)
+	
 	hud.gameOver = display.newImage(hud.gameOverGroup,"art/Ingame/gameoverbox.png",0,0)
-	--hud.gameOver.xScale, hud.gameOver.yScale = .7,.7
-	hud.gameOver.x, hud.gameOver.y = 74,-90
-	--hud.gameOver:addEventListener("tap",hud.returntrue)
 
+	hud.gameOverGroup.x = _W*.5
+	hud.gameOverGroup.y = -_H
+	hud.gameOverGroup.xScale, hud.gameOverGroup.yScale = 2.5,2.5
+	
 	for i=1,#socialList do
 		hud.socialGroup = display.newGroup()
 		hud.socialPics = display.newImage(hud.socialGroup,socialList[i].pic,0,0)
-		hud.socialPics.x = hud.socialPics.width*i*2.1
-
-		hud.socialGroup.x,hud.socialGroup.y = 10,-50
+		hud.socialPics.x = hud.socialPics.width*(i-1)*2.1
+		hud.socialGroup.x = -hud.socialGroup.width
+		hud.socialGroup.y = hud.gameOver.y + 40
+		
 		socialButtonList[#socialButtonList+1] = hud.socialGroup
+		
 		hud.gameOverGroup:insert(hud.socialGroup)
 
 		hud.socialGroup:addEventListener("touch",socialList[i].listener)
@@ -100,6 +105,7 @@ function hud.deleteHud(event,group)
 	for i=1,#hudList do
 		buttonList[i]:removeEventListener("tap",hudList[i].listener)
 		buttonList[i]:removeEventListener("touch",hud.returntrue)
+		
 		display.remove(buttonList[i])
 		display.remove(group)
 	end
@@ -107,10 +113,11 @@ function hud.deleteHud(event,group)
 	for i=1,#socialList do
 		socialButtonList[i]:removeEventListener("tap",hud.returntrue)
 		socialButtonList[i]:removeEventListener("touch",socialList[i].listener)
+		
 		display.remove(socialButtonList)
 		display.remove(socialGroup)
 	end
-	--hud.gameOver:removeEventListener("tap",hud.returntrue)
+
 	gameOverTransition2 = nil
 	gameOverTransition = nil
 end	
