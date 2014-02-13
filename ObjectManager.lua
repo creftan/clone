@@ -143,7 +143,7 @@ function O:StartingUpdate(event)
 end
 
 function O:GameStartExclusiveContent()  --- allt Content som ska laddas in under uppstart
-	O.Core:CreateTimeObject( 0, "art/ingame/mountain.png", "art/ingame/mountain.png", O.ScreenMaxX * 0.35, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.3), 2, false, false, "static", 0, 0, 0, 0)
+	O.Core:CreateTimeObject( 0, "art/Ingame/mountain.png", "art/Ingame/mountain.png", O.ScreenMaxX * 0.35, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.3), 2, false, false, "static", 0, 0, 0, 0)
 end
 
 
