@@ -39,7 +39,7 @@ function P:CreatePlayer(PosX, PosY)
 	P.Player.x = PosX;
 	P.Player.y = PosY;
 	P.Player.PreY = PosY;
-	local Radius = ((P.Player.width + P.Player.height) * 0.25)
+	local Radius = ((P.Player.width + P.Player.height) * 0.15)
 	P.Physics.addBody( P.Player  ,"dynamic", { density = P.Density, friction = P.Friction, bounce = P.Bounce, radius = Radius } );
 	P.Player:setLinearVelocity( 0, 0 );
 
