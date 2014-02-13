@@ -2,8 +2,10 @@ display.setStatusBar( display.HiddenStatusBar )
 
 local storyboard 	= require "storyboard"
 
-function print()
+function prints()
 
 end 
+_G.aud = require("audioo")
+_G.sounds = aud.loadsounds()
 
 storyboard.gotoScene("startBackground")

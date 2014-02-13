@@ -118,10 +118,12 @@ end
 
 function OnTouch( event )
     if event.phase == "began" and P.Player ~= nil and P.Core.GameRunning == true then
+    	aud.play(sounds.flap)
       	if P.Player.y > P.Player.height then
          	P.Player:setLinearVelocity( 0, P.YVelBoost * -1 )
      	end
     elseif P.Core.GameReadyToRun == true then
+    	aud.play(sounds.flap)
     	P.Core.GameReadyToRun = false;
     	P.Core:StartGame();
     	P.Player:setLinearVelocity( 0, P.YVelBoost * -1 )
@@ -138,6 +140,7 @@ end
 
 
 function GlobalPreCollisionFunction(self, event)
+	aud.play(sounds.die)
 	P.PlayerObsticleCollide = true;
 end
 
