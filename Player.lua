@@ -81,7 +81,7 @@ function P:Rotate(counter)
 
 		P.Player:rotate(Rotate);
 		P.Player.PreY = P.Player.y;
-		print (counter.." counter")
+		--print (counter.." counter")
 		P.Player.tail.rotation = math.sin(counter)*20	
 
 

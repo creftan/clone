@@ -393,6 +393,11 @@ function C:GameRunningUpdate(event)
 	C.Timers.DeltaTimeTick = C.Timers.DeltaTime;
 	--ObjectUpdate Movement
 	for i=1,C.ObjectCount do
+		for k,v in pairs(C.ObjectList[i]) do
+
+				print(k,v)
+		end
+		print " "
 		C.ObjectList[i].X = C.ObjectList[i].X - (C.ObjectList[i].MoveSpeed * C.Timers.DeltaTime);
 		C:UpdateObjectPosition(i, C.ObjectList[i].X, C.ObjectList[i].Y);
 	end

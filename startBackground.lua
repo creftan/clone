@@ -24,7 +24,7 @@ local sceneView = self.view
 	function makescene()
 		createdBackground = true
 		--[[
-		doge_body = display.newImageRect(doge,"art/startScreen/doge.png",32,32)
+		doge_body = display.newImageRect(doge,"art/startscreen/doge.png",32,32)
 		doge_tail = display.newImageRect(doge,"art/startscreen/doge_tail.png",32,32)
 		doge_body.xScale = 2
 		doge_body.yScale = 2
@@ -39,13 +39,13 @@ local sceneView = self.view
 		p.position2 = 0 
 		p.position3 = 0 
 
-	logo = display.newImageRect("art/startScreen/logo.png", 226,60)
+	logo = display.newImageRect("art/startscreen/logo.png", 226,60)
 	logo.xScale = 2
 	logo.yScale = 2
 	logo.x = _W*.5
 	logo.y = _H*.15
 	
-	copy = display.newImageRect("art/startScreen/copyright.png", 113,30)
+	copy = display.newImageRect("art/startscreen/copyright.png", 113,30)
 	copy.xScale = 1
 	copy.yScale = 1
 	copy.x = _W*.5
@@ -54,50 +54,50 @@ local sceneView = self.view
 
 
 
-		parallax2.layer1_1=display.newImageRect(parallax2,"art/startScreen/mountain.png", 64,128)
+		parallax2.layer1_1=display.newImageRect(parallax2,"art/startscreen/mountain.png", 64,128)
 		parallax2.layer1_1.xScale = 2
 		parallax2.layer1_1.yScale = 2
 		parallax2.layer1_1.x = _W/2
 		parallax2.layer1_1.y = _H*.64
 
-		parallax2.layer1_2=display.newImageRect(parallax2,"art/startScreen/mountain.png", 64,128)
+		parallax2.layer1_2=display.newImageRect(parallax2,"art/startscreen/mountain.png", 64,128)
 		parallax2.layer1_2.xScale = 2
 		parallax2.layer1_2.yScale = 2
 		parallax2.layer1_2.x = _W/2 + 512
 		parallax2.layer1_2.y = _H*.64
 
-		parallax2.layer3_1=display.newImageRect(parallax2,"art/startScreen/mountain_2.png", 64,128)
+		parallax2.layer3_1=display.newImageRect(parallax2,"art/startscreen/mountain_2.png", 64,128)
 		parallax2.layer3_1.xScale = 2
 		parallax2.layer3_1.yScale = 2
 		parallax2.layer3_1.x = _W/2 + 300
 		parallax2.layer3_1.y = _H*.64
 
-		parallax2.layer3_2=display.newImageRect(parallax2,"art/startScreen/mountain_2.png", 64,128)
+		parallax2.layer3_2=display.newImageRect(parallax2,"art/startscreen/mountain_2.png", 64,128)
 		parallax2.layer3_2.xScale = 2
 		parallax2.layer3_2.yScale = 2
 		parallax2.layer3_2.x = _W/2 + 812
 		parallax2.layer3_2.y = _H*.64
 
 
-		parallax1.layer1_1=display.newImageRect(parallax1,"art/startScreen/bushes.png", 256,64)
+		parallax1.layer1_1=display.newImageRect(parallax1,"art/startscreen/bushes.png", 256,64)
 		parallax1.layer1_1.xScale = 2
 		parallax1.layer1_1.yScale = 2
 		parallax1.layer1_1.x = _W/2
 		parallax1.layer1_1.y = _H*.74
 
-		parallax1.layer1_2=display.newImageRect(parallax1,"art/startScreen/bushes.png", 256,64)
+		parallax1.layer1_2=display.newImageRect(parallax1,"art/startscreen/bushes.png", 256,64)
 		parallax1.layer1_2.xScale = 2
 		parallax1.layer1_2.yScale = 2
 		parallax1.layer1_2.x = _W/2 + 512
 		parallax1.layer1_2.y = _H*.74
 
-		parallax1.layer2_1=display.newImageRect(parallax2,"art/startScreen/clouds.png", 256,64)
+		parallax1.layer2_1=display.newImageRect(parallax2,"art/startscreen/clouds.png", 256,64)
 		parallax1.layer2_1.xScale = 2
 		parallax1.layer2_1.yScale = 2
 		parallax1.layer2_1.x = _W/2
 		parallax1.layer2_1.y = _H*.02
 
-		parallax1.layer2_2=display.newImageRect(parallax2,"art/startScreen/clouds.png", 256,64)
+		parallax1.layer2_2=display.newImageRect(parallax2,"art/startscreen/clouds.png", 256,64)
 		parallax1.layer2_2.xScale = 2
 		parallax1.layer2_2.yScale = 2
 		parallax1.layer2_2.x = _W/2 + 512
@@ -112,13 +112,13 @@ local sceneView = self.view
 			sky.x = _W*.5
 			sky.y = _H*.4
 		
-		ground_top_1 = display.newImageRect(topgroup,"art/startScreen/ground_top_2.png",692,129)
+		ground_top_1 = display.newImageRect(topgroup,"art/startscreen/ground_top_2.png",692,129)
 			ground_top_1.xScale = 1
 			ground_top_1.yScale = 1
 			ground_top_1.x = _W*.5
 			ground_top_1.y = _H*.90
 
-		ground_top_2 = display.newImageRect(topgroup,"art/startScreen/ground_top_2.png",692,129)
+		ground_top_2 = display.newImageRect(topgroup,"art/startscreen/ground_top_2.png",692,129)
 			ground_top_2.xScale = 1
 			ground_top_2.yScale = 1
 			ground_top_2.x = _W*.5 + 692
