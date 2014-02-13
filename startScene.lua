@@ -238,7 +238,7 @@ end
 	menuGroup.alpha = 1
 	menuGroup:toFront()
 
-	local menulist = {"art/buttons/b_play.png"}
+	local menulist = {"art/Buttons/b_play.png"}
 	
 	for i=1,#menuFunc do
 		buttonGroup	= display.newGroup()

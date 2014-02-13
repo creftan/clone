@@ -107,7 +107,7 @@ local sceneView = self.view
 		floorgroup = display.newGroup()
 		topgroup = display.newGroup()
 
-		sky = display.newImage ("art/backdrop/backdrop.png")
+		sky = display.newImage ("art/Backdrop/backdrop.png")
 			sky:setFillColor(.5,.6,.9)
 			sky.x = _W*.5
 			sky.y = _H*.4
