@@ -10,7 +10,11 @@ settings = {
     
     iphone = {
             plist = {
+			UIAppFonts =
+			            {
+			                "Arcade.ttf",
 
+			            },
                 UIApplicationExitsOnSuspend = false,
                 FacebookAppID = "352378071558753",  --replace XXXXXXXXXX with your Facebook App ID
                 CFBundleURLTypes = {
