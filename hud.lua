@@ -1,3 +1,4 @@
+
 local hud = {}
 local soundOn = true
 local socialModule = require "socialModule"
@@ -77,12 +78,18 @@ function hud.createHud(event,group)
 
 	end
 
-	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,"origamimommy",35)
+	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,"Origami Mommy",35)
 	hud.scoreText.x = _W*.5
 	hud.scoreText.y = _H*.15
 	
 	function hud.getScore(score)
+		local oldtext = {}
+		oldtext.y = hud.scoreText.y
+
 		hud.scoreText.text = score
+		transition.to (hud.scoreText, {time = 20,y = oldtext.y + 10,transition=easing.InOutQuad,onComplete=function()
+		transition.to (hud.scoreText, {time = 50,y = oldtext.y, transition=easing.InOutQuad})
+		end})  
 	end
 
 

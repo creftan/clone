@@ -69,8 +69,8 @@ function O:CreateObsticles()
 	local RandomPosXOffset1 = math.random(-45,65) * DayNightValue;
 	local RandomPosXOffset2 = math.random(-65,45)* -1 * DayNightValue; --- omkastning pga dålig random funktion
 
-	O.Core:CreateTimeObject( 2, "art/Ingame/longcatbody1.png", "art/Ingame/longcatbody1Night.png", ObstStartPosX , Obj1Y, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0, 7+(15*DayNightValue))
-	O.Core:CreateTimeObject( 2, "art/Ingame/longcatbody2.png", "art/Ingame/longcatbody2Night.png", ObstStartPosX , Obj2Y, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0, 7+(15*DayNightValue))
+	O.Core:CreateTimeObject( 2, "art/Ingame/longcatbody1.png", "art/Ingame/longcatbody1Night.png", ObstStartPosX , Obj1Y, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0, 1)
+	O.Core:CreateTimeObject( 2, "art/Ingame/longcatbody2.png", "art/Ingame/longcatbody2Night.png", ObstStartPosX , Obj2Y, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0, 0)
 	O.Core:CreateTimeObject( 2, "art/Ingame/longcatarm1.png", "art/Ingame/longcatarm1Night.png", ObstStartPosX-35, Obj1Y+110, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0, 0)
 	O.Core:CreateTimeObject( 2, "art/Ingame/longcatarm2.png", "art/Ingame/longcatarm2Night.png", ObstStartPosX-35, Obj2Y-110, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0, 0)
 
@@ -101,6 +101,7 @@ function O:Update(event)
 	if O.PlayerPoints > O.PrePlayerPoints then
 		print(O.PlayerPoints - O.PrePlayerPoints, 'New Points');
 		print(O.PlayerPoints, 'Total Points');
+		hud.getScore(O.PlayerPoints)
 		O.PrePlayerPoints = O.PlayerPoints;
 	end
 	-------------------------
@@ -148,6 +149,8 @@ function O:StartingUpGame(event)
 		O.Player:CreatePlayer(0, 0);
 		O.Player:SetPlayerPoints(0);
 		O.PrePlayerPoints = 0;
+		hud.getScore(O.PlayerPoints)
+
 		O.Core:PauseGame();
 		O.Core.GameReadyToRun = true;
 	 end, 1 )
