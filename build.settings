@@ -10,6 +10,8 @@ settings = {
     
     iphone = {
             plist = {
+            CFBundleIdentifier = "com.creftan.clean",
+            CFBundleDisplayName = "Clean test",
 			UIAppFonts =
 			            {
 			                "Arcade.ttf",
