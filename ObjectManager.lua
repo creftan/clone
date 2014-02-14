@@ -112,7 +112,15 @@ function O:Update(event)
 		O.Core:PauseGame();
 		O.Player:Death();
 		hud.gameOverBoxMove();
-		hud.setScoresGameOver(O.PlayerPoints, "top")
+		
+		local high = hud.loadHighscore()
+		
+		if high < O.PlayerPoints then 
+			hud.saveHighscore(O.PlayerPoints)
+			high = O.PlayerPoints
+		end 
+
+		hud.setScoresGameOver(O.PlayerPoints, high)
 
 		function O.restartGame()
 			O.Core:PauseGame();

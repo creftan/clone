@@ -116,6 +116,34 @@ function hud.createHud(event,group)
 	
 	end
 
+	function hud.loadHighscore() 
+    
+    	local path = system.pathForFile( "save.txt", system.DocumentsDirectory )
+    	local file = io.open( path, "r" )
+    
+    	if file == nil then Highscore = 0; end
+    
+    	if file ~=nil then 
+    	    for line in file:lines() do
+    	        Highscore=tonumber(line)
+    	    end
+    	    io.close( file )
+    	end 
+    	return Highscore
+    end 
+
+ 
+    function hud.saveHighscore(saveData)
+        local path = system.pathForFile( "save.txt", system.DocumentsDirectory )
+        local file = io.open( path, "w" )
+        
+        file:write( saveData )
+        io.close( file )
+        file = nil		
+ 	end 
+
+
+
 	function hud.setScoresGameOver(score1, score2)
 		hud.gameOvertext1.text = score1		
 		hud.gameOvertext2.text = score2

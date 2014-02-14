@@ -18,8 +18,8 @@ Physics.start();
 -------------------------------------------
 aud.loadsounds(soundtable)
 
-local string = "0"
-local ScoreBoard = display.newText(string, 10, 10, native.systemFont, 10)
+--local string = "0"
+--local ScoreBoard = display.newText(string, 10, 10, native.systemFont, 10)
     --ScoreBoard:setFillColor(1,1,1)
 
 
