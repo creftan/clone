@@ -175,7 +175,7 @@ function O:GameStartExclusiveContent()  --- allt Content som ska laddas in under
 	O.Core:CreateTileObject( "art/Ingame/cloudsFront.png", "art/Ingame/cloudsFrontNight.png", (ObstStartPosX + 300), (O.ScreenMaxY*0)-20, (O.WorldSpeed * 1.05),5, false, false, "static", 0)
 	O.Core:CreateTileObject( "art/Ingame/grass.png", "art/Ingame/grassNight.png", (ObstStartPosX + 200), O.ScreenMaxY, (O.WorldSpeed * 1.05), 5, true, false, "static", 0)
 	
-    O.Core:CreateTileObject( "art/Backdrop/backdropDay.png", "art/Backdrop/backdropNight.png", O.ScreenMaxX*2, (O.ScreenMaxY * 0.4), 0, 1, false, false, "static", 0)
+    O.Core:CreateTileObject( "art/Backdrop/backdropDay.png", "art/Backdrop/backdropNight.png", (ObstStartPosX + 300), (O.ScreenMaxY * 0.4),(O.WorldSpeed*0.3), 1, false, false, "static", 0)
  	O.Core:CreateTileObject( "art/Ingame/bushes.png", "art/Ingame/bushesNight.png", (ObstStartPosX + 300), (O.ScreenMaxY*0.735), (O.WorldSpeed * 0.5),3, false, false, "static", 0)
  	O.Core:CreateTileObject( "art/Ingame/clouds.png", "art/Ingame/cloudsNight.png", (ObstStartPosX + 300), (O.ScreenMaxY*0.02), (O.WorldSpeed * 0.2),2, false, false, "static", 0)
 
