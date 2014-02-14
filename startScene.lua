@@ -50,9 +50,6 @@ function scene:createScene(e)
 	display.setDefault( "magTextureFilter", "nearest" )
 	display.setDefault( "minTextureFilter", "nearest" )
 
-	local p = {}
-	local parallax2 = display.newGroup()
-	local parallax1 = display.newGroup()
 	--local doge = display.newGroup()
 	sceneView:insert(parallax2)
 	sceneView:insert(parallax1)
@@ -290,7 +287,7 @@ end
 		else
 			transitionFunc(menuGroup,100,_H*.75,easing.InOutQuad,function()
 				transitionFunc(menuGroup,100,-_H,easing.InOutQuad,function()
-					storyboard.gotoScene(scene)
+					storyboard.gotoScene(scene,{effect="crossFade",time=100})
 				end)
 			end)
 		end

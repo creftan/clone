@@ -7,7 +7,7 @@ local scene         = storyboard.newScene()
 function scene:createScene(e)
 
 local sceneView = self.view
-
+	
 	display.setDefault( "magTextureFilter", "nearest" )
 	display.setDefault( "minTextureFilter", "nearest" )
 

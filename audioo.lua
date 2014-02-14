@@ -41,7 +41,7 @@ end
 
 function aud.loadsounds(soundtable)
 	if not soundtable then 
-		soundtable = {flap = {"flap.wav"}, die = {"die.wav"}, point = {"point.wav"}}
+		soundtable = {flap = {"flap.wav"}, die = {"die.wav"}, point = {"point.wav"}, mosika = {"doge.mp3"},}
 	end 
 
 	for k,v in pairs(soundtable) do
@@ -49,7 +49,6 @@ function aud.loadsounds(soundtable)
 		sounds[k] = {}
 		for a = 1,#v do 
 			sounds[k][a] = audio.loadSound (basedir..v[a])
-			
 		end 
 	end
 	
@@ -57,7 +56,11 @@ return sounds
 
 end 
 
-
+function aud.playMusic(sound)
+	local music = audio.loadStream( "Audio/doge.mp3" )
+	local bgMusic = audio.play( music, { channel=1, loops=-1 } )
+	audio.setVolume(.3, {channel = 1})
+end
 
 function aud.play(sound, wait)
 

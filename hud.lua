@@ -1,6 +1,7 @@
 
 local hud = {}
 local soundOn = true
+local musicOn = true
 local socialModule = require "socialModule"
 
 function hud.makeRandomSentence()
@@ -16,7 +17,7 @@ end
 
 
 function hud.forSfx(event)
-	if event.phase == "ended" then
+	--if event.phase == "ended" then
 		if soundOn then
 			soundOn = false
 			aud.setsoundvolume(0)
@@ -24,11 +25,17 @@ function hud.forSfx(event)
 			soundOn = true
 			aud.setsoundvolume(1)
 		end
-	end
+	--end
 end
 
 function hud.forMusic(event)
-	print("music")
+	if musicOn then
+		musicOn = false
+		aud.setmusicvolume(0)
+	else 
+		musicOn = true
+		aud.setmusicvolume(.3)
+	end
 end
 	
 function hud.returntrue()
@@ -72,8 +79,8 @@ function hud.createHud(event,group)
 	
 		buttonList[#buttonList+1] = hud.hudPic
 
-		hud.hudPic:addEventListener("touch",hudList[i].listener)
-		hud.hudPic:addEventListener("tap",hud.returntrue)
+		hud.hudPic:addEventListener("tap",hudList[i].listener)
+		hud.hudPic:addEventListener("touch",hud.returntrue)
 		group:insert(hud.hudGroup)
 
 	end
@@ -113,7 +120,7 @@ function hud.createHud(event,group)
 		transition.to (hud.scoreText, {time = 20,y = oldtext.y + 10,transition=easing.InOutQuad,onComplete=function()
 		transition.to (hud.scoreText, {time = 50,y = oldtext.y, transition=easing.InOutQuad})
 		end})  
-	
+		aud.play(sounds.point)
 	end
 
 	function hud.loadHighscore() 
@@ -200,8 +207,8 @@ function hud.deleteHud(event,group)
 
 	display.remove(hud.gameOverGroup)
 	for i=1,#hudList do
-		buttonList[i]:removeEventListener("tap",hudList[i].listener)
-		buttonList[i]:removeEventListener("touch",hud.returntrue)
+		buttonList[i]:removeEventListener("touch",hudList[i].listener)
+		buttonList[i]:removeEventListener("tap",hud.returntrue)
 		
 		display.remove(buttonList[i])
 		display.remove(group)
