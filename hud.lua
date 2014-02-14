@@ -3,7 +3,7 @@ local hud = {}
 local soundOn = true
 local musicOn = true
 local socialModule = require "socialModule"
-
+local facebook = require("facebook")
 function hud.makeRandomSentence()
 	local list1 = {"SUCH","VERY","SO","MUCH","WOW"}
 	local list2 = {"SCORE","BRAVE","PROGRESS","DOGE","GOOD"}
@@ -44,7 +44,7 @@ end
 
 function hud.forFacebook(event)
 	if event.phase == "ended" then
-		socialModule.sendfbAppCapture("pic.png","FUCKING AWESOME!\ntest the app here: http://fuckyou.com/")
+		facebook.request( "me/feed", "POST", { message="Test\n\n\nAnother test" } )
 	end
 end
 
