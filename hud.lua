@@ -78,18 +78,36 @@ function hud.createHud(event,group)
 
 	end
 
-	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,"Origami Mommy",35)
+	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,"Arcade",35)
 	hud.scoreText.x = _W*.5
 	hud.scoreText.y = _H*.15
-	
+
+	hud.wowText = display.newText(hud.hudGroup," ",0,0,"Arcade",20)
+	hud.wowText.x = _W*.5
+	hud.wowText.y = _H*.20
+	local scorecounter = 0 
+
 	function hud.getScore(score)
 		local oldtext = {}
+		scorecounter = scorecounter + 1
+
 		oldtext.y = hud.scoreText.y
 
 		hud.scoreText.text = score
+		
+		if scorecounter == 6 then 
+			hud.wowText.text = hud.makeRandomSentence()
+			hud.wowText.alpha = 1
+			hud.wowText.xScale = 1
+			hud.wowText.yScale = 1
+		
+			transition.to (hud.wowText, {delay = 500, time = 500, alpha = 0, xScale = 3, yscale = .1})
+			scorecounter = 1 
+		end 		
 		transition.to (hud.scoreText, {time = 20,y = oldtext.y + 10,transition=easing.InOutQuad,onComplete=function()
 		transition.to (hud.scoreText, {time = 50,y = oldtext.y, transition=easing.InOutQuad})
 		end})  
+	
 	end
 
 
@@ -133,6 +151,7 @@ end
 
 function hud.deleteHud(event,group)
 	print("Deletes ")
+	display.remove(scoreText)
 	display.remove(hud.gameOverGroup)
 	for i=1,#hudList do
 		buttonList[i]:removeEventListener("tap",hudList[i].listener)
