@@ -38,6 +38,9 @@ C.HudDisplayGroup = display.newGroup();
 C.GameRunning = false;
 C.GameReadyToRun = false;
 
+C.PlayerClassPointer = nil;
+C.PlayerPosX = 0;
+
 
 function C:InitCore(PhysPointer, ScreenMinX, ScreenMaxX, ScreenMinY, ScreenMaxY, WorldSpeed, OverlayTimerSpeed)
 	C.Physics = PhysPointer;
@@ -48,6 +51,10 @@ function C:InitCore(PhysPointer, ScreenMinX, ScreenMaxX, ScreenMinY, ScreenMaxY,
 	C.WorldSpeed = WorldSpeed;
 	C.OverlayTimerSpeed = OverlayTimerSpeed;
 
+end
+
+function C:SetPlayerClassPointer(PlayerPointer)
+	C.PlayerClassPointer = PlayerPointer;
 end
 
 function C:CreateTileObject(MainImagePath, OverlayImagePath, PosX, PosY, MoveSpeed, Layer, PhysObject, PhysObjectIsCircle, PhysicAtribute, SizeOffset)
@@ -103,7 +110,7 @@ function C:CreateObjectToTile(NumXTiles, MainImagePath, OverlayImagePath, PosX, 
 	-- Create Physic atributes
 	if PhysObject == true then
 		local Density = 1;
-    	local Friction = 0.3;
+    	local Friction = 1;
     	local Bounce = 0;
 	    	local Radius = ((Obj.GraphMain.height + Obj.GraphMain.width) * 0.25) + SizeOffset;
 		if PhysObjectIsCircle == true then
@@ -120,7 +127,7 @@ function C:CreateObjectToTile(NumXTiles, MainImagePath, OverlayImagePath, PosX, 
 
 end
 
-function C:CreateTimeObject(CreateTime, MainImagePath, OverlayImagePath, PosX, PosY, MoveSpeed, Layer, PhysObject, PhysObjectIsCircle, PhysicAtribute, SizeOffset, SinYMovement, SinYSpeed, SinYStart)
+function C:CreateTimeObject(CreateTime, MainImagePath, OverlayImagePath, PosX, PosY, MoveSpeed, Layer, PhysObject, PhysObjectIsCircle, PhysicAtribute, SizeOffset, SinYMovement, SinYSpeed, SinYStart, PointsToPlayer)
 	C.Timers.CounterCount = C.Timers.CounterCount + 1;
 	if C.Timers.CounterList[C.Timers.CounterCount] == nil then
 		local Timer = {}
@@ -132,12 +139,12 @@ function C:CreateTimeObject(CreateTime, MainImagePath, OverlayImagePath, PosX, P
 	if C.Timers.CounterList[C.Timers.CounterCount].Tick > CreateTime then
 		C.Timers.CounterList[C.Timers.CounterCount].Tick = C.Timers.CounterList[C.Timers.CounterCount].Tick - CreateTime;
 	
-		C:CreateObject(MainImagePath, OverlayImagePath, PosX, PosY, MoveSpeed, Layer, PhysObject, PhysObjectIsCircle, PhysicAtribute, SizeOffset, SinYMovement, SinYSpeed, SinYStart);
+		C:CreateObject(MainImagePath, OverlayImagePath, PosX, PosY, MoveSpeed, Layer, PhysObject, PhysObjectIsCircle, PhysicAtribute, SizeOffset, SinYMovement, SinYSpeed, SinYStart, PointsToPlayer);
 
 	end
 end
 
-function C:CreateObject(MainImagePath, OverlayImagePath, PosX, PosY, MoveSpeed, Layer, PhysObject, PhysObjectIsCircle, PhysicAtribute, SizeOffset, SinYMovement, SinYSpeed, SinYStart)
+function C:CreateObject(MainImagePath, OverlayImagePath, PosX, PosY, MoveSpeed, Layer, PhysObject, PhysObjectIsCircle, PhysicAtribute, SizeOffset, SinYMovement, SinYSpeed, SinYStart, PointsToPlayer)
 		
 	C.ObjectCount = C.ObjectCount + 1;
 	local Obj = {}
@@ -154,12 +161,13 @@ function C:CreateObject(MainImagePath, OverlayImagePath, PosX, PosY, MoveSpeed, 
 	Obj.SinYMovement = SinYMovement;
 	Obj.SinYSpeed = SinYSpeed;
 	Obj.SinYVal = SinYStart;
+	Obj.Points = math.ceil(PointsToPlayer);
 
 
 	-- Create Physic atributes
 	if PhysObject == true then
 		local Density = 1;
-    	local Friction = 0.3;
+    	local Friction = 1;
     	local Bounce = 0;
 	    	local Radius = (Obj.GraphMain.height * 0.5) + SizeOffset;
 		if PhysObjectIsCircle == true then
@@ -273,6 +281,13 @@ function C:UpdateObjectPosition(ObjectID, NewX, NewY)
 	UpdateGraphicPos(Obj.GraphOverlay, NewX, SinManiY );
 	Obj.GraphOverlay.alpha = C.OverLayAlpha;
 
+	-- GivePlayerPoints if Coords is procede
+	if Obj.X < C.PlayerPosX then
+		 C.PlayerClassPointer:AddPlayerPoints(Obj.Points);
+		 Obj.Points = 0;
+	end
+
+
 end
 
 function C:UpdateTileObjectPosition(ObjectID, NewX, NewY)
@@ -360,6 +375,10 @@ function C:StopGame()
 
 
 	--C.Physics.stop();
+end
+
+function C:SetPlayerXPos(PosX)
+	C.PlayerPosX = PosX;
 end
 
 function C:GetIfGameIsRunning()
