@@ -112,6 +112,8 @@ function O:Update(event)
 		O.Core:PauseGame();
 		O.Player:Death();
 		hud.gameOverBoxMove();
+		hud.setScoresGameOver(O.PlayerPoints, "top")
+
 		function O.restartGame()
 			O.Core:PauseGame();
 			O.Core:StopGame()

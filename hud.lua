@@ -116,7 +116,10 @@ function hud.createHud(event,group)
 	
 	end
 
-
+	function hud.setScoresGameOver(score1, score2)
+		hud.gameOvertext1.text = score1		
+		hud.gameOvertext2.text = score2
+	end 
 
 	function hud.gameOverBoxMove()
 		hud.gameOverTransition = transition.to(hud.gameOverGroup,{time=80,y=180,transition=easing.InOutQuad,onComplete=function()
@@ -128,6 +131,13 @@ function hud.createHud(event,group)
 	hud.hudGroup:insert(hud.gameOverGroup)
 	
 	hud.gameOver = display.newImage(hud.gameOverGroup,"art/Ingame/gameoverbox.png",0,0)
+	hud.gameOvertext1 = display.newText(hud.gameOverGroup,"0", 0,0, "Arcade", 10)
+	hud.gameOvertext1.x = 10
+	hud.gameOvertext1.y = -7
+	hud.gameOvertext2 = display.newText(hud.gameOverGroup,"0", 0,0, "Arcade", 10)
+	hud.gameOvertext2.x = 10
+	hud.gameOvertext2.y = 16
+
 
 	hud.gameOverGroup.x = _W*.5
 	hud.gameOverGroup.y = -_H
