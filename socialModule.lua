@@ -118,7 +118,12 @@ local social = {}
 local fbAppID = "385257411614412"
 
 local facebook  = require "facebook"
+
 local tweetOptions
+
+local popupName = "social"
+local serviceName = "twitter" -- Supported values: "twitter", "facebook", "sinaWeibo"
+
 facebook.publishInstall( fbAppID )
 
 function social.sendfbMessage(newMessage)
@@ -303,6 +308,36 @@ local newFolder = folder
 
 	native.showPopup( "twitter", tweetOptions )
 
+end
+
+function social.twitterAndroid(pic,message)
+	local isAvailable = native.canShowPopup( popupName, serviceName )
+
+
+	if isAvailable then
+	    local listener = {}
+	    function listener:popup( event )
+	        print( "name(" .. event.name .. ") type(" .. event.type .. ") action(" .. tostring(event.action) .. ") limitReached(" .. tostring(event.limitReached) .. ")" )
+	    end
+
+	    native.showPopup(
+	        popupName,
+	        {
+	            service = serviceName,
+	            message = message,
+	            listener = listener,
+	            url = 
+	            { 
+	                "http://www.fuckyou.com",
+
+	            }
+	        } )
+	else
+	    native.showAlert(
+	        "Cannot send " .. serviceName .. " message.",
+	        "Please setup your " .. serviceName .. " account or check your network connection",
+	        { "OK" } )
+	end
 end
 
 --------------------------------------------------------------------------------------------------

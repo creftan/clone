@@ -51,9 +51,12 @@ end
 function hud.forTwitter(event)
 
 	if event.phase == "ended" then
-		socialModule.sendTweetAppCapture("pic.png","FUCKING AWESOME!\ntest the app here: http://fuckyou.com/")
+		--socialModule.sendTweetAppCapture("pic.png","FUCKING AWESOME!\ntest the app here: http://fuckyou.com/")
+		socialModule.twitterAndroid("This is fucking awesome, fuck you!\nLine?")
 	end
 end
+
+
 
 function hud.createHud(event,group)
 	socialList = {
