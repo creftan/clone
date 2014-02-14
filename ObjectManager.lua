@@ -74,8 +74,8 @@ function O:CreateObsticles()
 	O.Core:CreateTimeObject( 2, "art/Ingame/longcatarm2.png", "art/Ingame/longcatarm2Night.png", ObstStartPosX-35, Obj2Y-110, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0)
 
 
-	O.Core:CreateTileObject( "art/Ingame/clouds.png", "art/Ingame/cloudsNight.png", (ObstStartPosX + 300), (O.ScreenMaxY*0)-20, (O.WorldSpeed * 1.05),5, false, false, "static", 0)
-	O.Core:CreateTileObject( "art/Ingame/grass.png", "art/Ingame/grassNight.png", (ObstStartPosX + 300), O.ScreenMaxY, (O.WorldSpeed * 1.05), 5, true, false, "static", 0)
+	O.Core:CreateTileObject( "art/Ingame/cloudsFront.png", "art/Ingame/cloudsFrontNight.png", (ObstStartPosX + 300), (O.ScreenMaxY*0)-20, (O.WorldSpeed * 1.05),5, false, false, "static", 0)
+	O.Core:CreateTileObject( "art/Ingame/grass.png", "art/Ingame/grassNight.png", (ObstStartPosX + 200), O.ScreenMaxY, (O.WorldSpeed * 1.05), 5, true, false, "static", 0)
 	
 
 	--O.Core:CreateTileObject( "Pipe2.png", "Pipe2.png", ObstStartPosX, Obj2Y, O.WorldSpeed, 2, false, false, "static", 0)
