@@ -78,7 +78,7 @@ function hud.createHud(event,group)
 
 	end
 
-	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,"Arcade",35)
+	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,"Arcade",40)
 	hud.scoreText.text = 0 
 	hud.scoreText.x = _W*.5
 	hud.scoreText.y = _H*.15
@@ -107,7 +107,7 @@ function hud.createHud(event,group)
 			hud.wowText.xScale = 1
 			hud.wowText.yScale = 1
 		
-			transition.to (hud.wowText, {delay = 500, time = 500, alpha = 0, xScale = 3, yscale = .1})
+			transition.to (hud.wowText, {delay = 500, time = 500, alpha = 0, xScale = 3, yScale = .1})
 			scorecounter = 0 
 		end 		
 		transition.to (hud.scoreText, {time = 20,y = oldtext.y + 10,transition=easing.InOutQuad,onComplete=function()
