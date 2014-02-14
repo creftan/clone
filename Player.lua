@@ -58,12 +58,12 @@ function P:CreatePlayer(PosX, PosY)
 	P.Player:addEventListener( "preCollision", P.Player )
 	P.Core:InsertInDisplayGroup( P.Player, P.Player , 10 );
 	--P.Core:InsertInDisplayGroup( P.Player.tail, P.Player.tail , 10 );
-	print("Player Created")
+	--print("Player Created")
 end
 
 function P:DestroyPLayer()
 	if P.Player ~= nil then
-		print("Player Destroyed")
+	--	print("Player Destroyed")
 		P.Physics.removeBody( P.Player);	
 		P.Player:removeSelf();
 		P.Player = nil;

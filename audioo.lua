@@ -9,12 +9,12 @@ local soundplayed
 
 function aud.playmusic(track)
 if isplaying then 
-	print ("track playing "..isplaying.." track loading "..track)
+	--print ("track playing "..isplaying.." track loading "..track)
 end 
 
 if isplaying then 
 	if isplaying ~= track then -- om ulik låt
-		print ("changing"..track)
+		--print ("changing"..track)
 		audio.stop(1)
 		audio.dispose(isplaying)
 		music = audio.loadStream( basedir..track)
@@ -22,7 +22,7 @@ if isplaying then
 
 	end 
 else --om ingen låt
-	print ("starting"..track)
+	--print ("starting"..track)
 	music = audio.loadStream( basedir..track)
 	audio.play(music, {channel = 1, loops = -1, fadein = 5000})
 end 
@@ -76,12 +76,12 @@ random = math.random(#sound)
 
 
 count = count + 1; if count > 31 then count = 3;end 
-print ("channel "..count) 
+--print ("channel "..count) 
 
 
 if wait then 
-	print "waiting"
-	print (soundplayed)
+--	print "waiting"
+--	print (soundplayed)
 	if not soundplayed then 
 		soundplayed = true  
 		audio.play (sound[random], {channel = count,  onComplete=done})
@@ -95,7 +95,7 @@ end
 
 function aud.setmusicvolume(volume)
 	audio.setVolume(volume, {channel = 1})
-	print ("set music volume to "..volume)
+--	print ("set music volume to "..volume)
 end 
 
 
@@ -104,7 +104,7 @@ function aud.setsoundvolume(volume)
 		audio.setVolume(volume, {channel = i})
 		
 	end 
-	print ("set sound volume to "..volume)
+--	print ("set sound volume to "..volume)
 end 
 
 
