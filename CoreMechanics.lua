@@ -329,20 +329,20 @@ function C:ResetCounters()
 end
 
 function C:PauseGame()
-	print("GamePaused");
+	--print("GamePaused");
 	C.GameRunning = false;
 	--C.Timers.DeltaTime = 0;
 	C.Physics.pause();
 end
 
 function C:StartGame()
-	print("GameStart");
+	--print("GameStart");
 	C.GameRunning = true;
 	C.Physics.start();
 end
 
 function C:StopGame()
-	print("GameStopped");
+	--print("GameStopped");
 	--C.Timers.DeltaTime = 0;
 	C.OverlayTimer = -0.5 * math.pi;
 	C.OverLayAlpha = 0

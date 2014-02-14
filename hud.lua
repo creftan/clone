@@ -201,7 +201,7 @@ function hud.printScore(Score)
 end
 
 function hud.deleteHud(event,group)
-	print("Deletes ")
+	--print("Deletes ")
 	display.remove(hud.scoreText)
 
 
@@ -227,6 +227,6 @@ function hud.deleteHud(event,group)
 end	
 
 sentence = hud.makeRandomSentence()
-print (sentence)
+--print (sentence)
 
 return hud

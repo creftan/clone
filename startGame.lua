@@ -27,7 +27,7 @@ aud.loadsounds(soundtable)
 
 
 local function PrintScore(Score)
-    print ("Score  "..Score)
+ --   print ("Score  "..Score)
     hud.getScore(Score)
 end
 

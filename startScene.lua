@@ -208,11 +208,11 @@ end
 	end
 
 	local function musicOff(event)
-		print("music")
+	--	print("music")
 	end
 
 	local function soundOff(event)
-		print("sound")
+	--	print("sound")
 	end
 	local menuFunc	= { 
 						{ 
@@ -251,7 +251,7 @@ end
 		buttonGroup:addEventListener("tap",menuFunc[i].EventListener)
 
 		function removeEventListeners()
-			print("Delete EventListener")
+			--print("Delete EventListener")
 			buttonGroup:removeEventListener("tap",menuFunc[i].EventListener)
 		end
 	end
@@ -275,7 +275,7 @@ end
 
 	function transitionFunc(object,timeTrans,yPos,transitionType,completed)
 		local transition = transition.to(object,{time=timeTrans,y=yPos,transition=transitionType,onComplete=completed})
-		print("Here again")
+		--print("Here again")
 	end
 
 	function menuTransitionFunc(scene)
