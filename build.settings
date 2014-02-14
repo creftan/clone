@@ -10,23 +10,25 @@ settings = {
     
     iphone = {
             plist = {
+            CFBundleIdentifier = "com.threeofus.flapdoge",
+            CFBundleDisplayName = "Flapdoge",
 			UIAppFonts =
 			            {
 			                "Arcade.ttf",
 
 			            },
                 UIApplicationExitsOnSuspend = false,
-                FacebookAppID = "579849992065331",  --replace XXXXXXXXXX with your Facebook App ID
+                FacebookAppID = "385257411614412",  --replace XXXXXXXXXX with your Facebook App ID
                 CFBundleURLTypes = {
                     {
-                    CFBundleURLSchemes = { "fb579849992065331", }  --replace XXXXXXXXXX with your Facebook App ID
+                    CFBundleURLSchemes = { "fb385257411614412", }  --replace XXXXXXXXXX with your Facebook App ID
                     }
                 },
 
                 ["URL types"] = {
                     item = {
                         ["URL Schemes"] =
-                            { ["Item 0"] = "fb579849992065331" },  --replace XXXXXXXXXX with your Facebook App ID
+                            { ["Item 0"] = "fb385257411614412" },  --replace XXXXXXXXXX with your Facebook App ID
                     },
                 },
             }
