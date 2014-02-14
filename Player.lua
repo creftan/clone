@@ -50,7 +50,7 @@ function P:CreatePlayer(PosX, PosY)
 	
 
 	P.Player.PreY = PosY;
-	local Radius = ((P.Player.width + P.Player.height) * 0.07)
+	local Radius = ((P.Player.width + P.Player.height) * 0.06)
 	P.Physics.addBody( P.Player  ,"dynamic", { density = P.Density, friction = P.Friction, bounce = P.Bounce, radius = Radius } );
 	P.Player:setLinearVelocity( 0, 0 );
 
@@ -128,7 +128,7 @@ end
 function OnTouch( event )
     if event.phase == "began" and P.Player ~= nil and P.Core.GameRunning == true then
     	aud.play(sounds.flap)
-      	if P.Player.y > P.Player.height then
+      	if P.Player.y > P.Player.height*0.5 then
          	P.Player:setLinearVelocity( 0, P.YVelBoost * -1 )
      	end
     elseif P.Core.GameReadyToRun == true then

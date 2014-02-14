@@ -58,7 +58,7 @@ function C:SetPlayerClassPointer(PlayerPointer)
 end
 
 function C:CreateTileObject(MainImagePath, OverlayImagePath, PosX, PosY, MoveSpeed, Layer, PhysObject, PhysObjectIsCircle, PhysicAtribute, SizeOffset)
-	
+
 	C.TileManager.TileCounter = C.TileManager.TileCounter + 1;
 	if C.TileManager.List[C.TileManager.TileCounter] == nil then
 		C.TileManager.List[C.TileManager.TileCounter] = 1;
