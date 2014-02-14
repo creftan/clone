@@ -58,7 +58,7 @@ function O:CreateObsticles()
   	-- Tricket med att få Tiles att funka är att skapa dem väldigt mycket åt höger, dock så är det mer prestanda ju mer åt höger man skapar dem
     O.Core:CreateTileObject( "art/Backdrop/backdropDay.png", "art/Backdrop/backdropNight.png", 0, (O.ScreenMaxY * 0.4), 1, 1, false, false, "static", 0)
  	O.Core:CreateTileObject( "art/Ingame/bushes.png", "art/Ingame/bushesNight.png", (ObstStartPosX + 300), (O.ScreenMaxY*0.735), (O.WorldSpeed * 0.5),3, false, false, "static", 0)
- 	O.Core:CreateTileObject( "art/Ingame/clouds.png", "art/Ingame/clouds.png", (ObstStartPosX + 300), (O.ScreenMaxY*0), (O.WorldSpeed * 0.2),2, false, false, "static", 0)
+ 	O.Core:CreateTileObject( "art/Ingame/clouds.png", "art/Ingame/cloudsNight.png", (ObstStartPosX + 300), (O.ScreenMaxY*0.02), (O.WorldSpeed * 0.2),2, false, false, "static", 0)
 
  	local DayNightValue = O.Core:GetTimeCycle()
  	DayNightValue = DayNightValue*DayNightValue; ---- för att svårighetsgraden ska öka exponentiellt istället för linjärt
@@ -75,7 +75,7 @@ function O:CreateObsticles()
 	O.Core:CreateTimeObject( 2, "art/Ingame/longcatarm2.png", "art/Ingame/longcatarm2Night.png", ObstStartPosX-35, Obj2Y-110, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0, 0)
 
 
-
+	O.Core:CreateTileObject( "art/Ingame/clouds.png", "art/Ingame/cloudsNight.png", (ObstStartPosX + 300), (O.ScreenMaxY*0)-20, (O.WorldSpeed * 1.05),5, false, false, "static", 0)
 	O.Core:CreateTileObject( "art/Ingame/grass.png", "art/Ingame/grassNight.png", (ObstStartPosX + 300), O.ScreenMaxY, (O.WorldSpeed * 1.05), 5, true, false, "static", 0)
 	
 
