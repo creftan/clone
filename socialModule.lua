@@ -115,7 +115,7 @@ example: social.sendMail("test@test.com","This is my subject","This is my messag
 
 local social = {}
 
-local fbAppID = "352378071558753"
+local fbAppID = "579849992065331"
 
 local facebook  = require "facebook"
 local tweetOptions

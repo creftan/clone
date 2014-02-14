@@ -16,17 +16,17 @@ settings = {
 
 			            },
                 UIApplicationExitsOnSuspend = false,
-                FacebookAppID = "352378071558753",  --replace XXXXXXXXXX with your Facebook App ID
+                FacebookAppID = "579849992065331",  --replace XXXXXXXXXX with your Facebook App ID
                 CFBundleURLTypes = {
                     {
-                    CFBundleURLSchemes = { "fb352378071558753", }  --replace XXXXXXXXXX with your Facebook App ID
+                    CFBundleURLSchemes = { "fb579849992065331", }  --replace XXXXXXXXXX with your Facebook App ID
                     }
                 },
 
                 ["URL types"] = {
                     item = {
                         ["URL Schemes"] =
-                            { ["Item 0"] = "fb352378071558753" },  --replace XXXXXXXXXX with your Facebook App ID
+                            { ["Item 0"] = "fb579849992065331" },  --replace XXXXXXXXXX with your Facebook App ID
                     },
                 },
             }
