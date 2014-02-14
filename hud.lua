@@ -44,7 +44,7 @@ end
 
 function hud.forFacebook(event)
 	if event.phase == "ended" then
-		social.sendfbMessage("Test\n\n\nTest!")
+		socialModule.sendfbMessage("Test\n\n\nTest!")
 	end
 end
 
