@@ -2,8 +2,8 @@ display.setStatusBar( display.HiddenStatusBar )
 
 local storyboard 	= require "storyboard"
 
-function print()
+--function print()
 
-end 
+--end 
 
 storyboard.gotoScene("startBackground")

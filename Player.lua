@@ -7,8 +7,8 @@ P.ScreenMaxY = 0;
 P.Gravity = 0
 P.YVelBoost = 0;
 P.Density = 1;
-P.Friction = 0.3;
-P.Bounce = 0;
+P.Friction = 1;
+P.Bounce = 0.5;
 
 P.Player = nil;
 
@@ -17,6 +17,8 @@ P.Physics = nil;
 P.Core = nil;
 
 P.PlayerObsticleCollide = false;
+
+P.PlayersPoints = 0;
 
 
 function P:Init(PhysPointer, CorePointer, ScreenMinX, ScreenMaxX, ScreenMinY, ScreenMaxY, YGravity, FlappBoost )
@@ -62,11 +64,18 @@ end
 function P:DestroyPLayer()
 	if P.Player ~= nil then
 		print("Player Destroyed")
-		P.Physics.removeBody( P.Player);
-		P.Player:removeEventListener( "preCollision", P.Player )
+		P.Physics.removeBody( P.Player);	
 		P.Player:removeSelf();
 		P.Player = nil;
 	end
+end
+
+function P.Death()
+	P.Player:removeEventListener( "preCollision", P.Player );
+	P.Physics:start()
+	local NerfVal = 1;
+	--local Dir = (math.random(0,1) * 2) - 1
+	P.Player:setLinearVelocity( P.YVelBoost * NerfVal, P.YVelBoost * -1 * NerfVal )
 end
 
 function P:Rotate(counter)
@@ -92,28 +101,28 @@ function P:Rotate(counter)
 			P.Player.rotation = -30;
 		end
 
+		P.Core:SetPlayerXPos(P.Player.x);
 		
 	end
 end
 
-local counter = 0  
+P.TailCounter = 0  
 
 function P:Update()
 	local GameRuns = P.Core:GetIfGameIsRunning();
 	if GameRuns == true then
 
+		local DeltaTime = P.Core:GetDeltaTime();
+		P.TailCounter = P.TailCounter + (31 * DeltaTime) 
 		
-		counter = counter + .5
-		
-		if counter > 360 then counter = 0 
+		if P.TailCounter > 360 then P.TailCounter = 0 
 		end
 		
-		P:Rotate(counter);
-
-
+		P:Rotate(P.TailCounter);
 		
 
 	end
+
 end
 
 function OnTouch( event )
@@ -134,6 +143,18 @@ function P:GetPlayerCollisionData()
 	local ObsCol = P.PlayerObsticleCollide;
 	P.PlayerObsticleCollide = false;
 	return ObsCol;
+end
+
+function P:GetPlayerPoints()
+	return P.PlayersPoints;
+end
+
+function P:SetPlayerPoints(NewPointValue)
+	P.PlayersPoints = NewPointValue;
+end
+
+function P:AddPlayerPoints(AddPoints)
+	P.PlayersPoints = P.PlayersPoints + AddPoints;
 end
 
 

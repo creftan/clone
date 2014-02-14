@@ -26,6 +26,7 @@ function O:Init(PhysPointer, ScreenMinX, ScreenMaxX, ScreenMinY, ScreenMaxY, Wor
 	O.WorldSpeed = WorldSpeed;
 	O.Core:InitCore(PhysPointer, ScreenMinX, ScreenMaxX, ScreenMinY, ScreenMaxY, WorldSpeed, OverlayTimerSpeed);
 	O.Player:Init(PhysPointer, O.Core, ScreenMinX, ScreenMaxX, ScreenMinY, ScreenMaxY, Gravity, FlappBoost );
+	O.Core:SetPlayerClassPointer(O.Player);
 	O.StartingGame = true;
 	
 
@@ -52,7 +53,7 @@ function O:CreateObsticles()
 
 --INFO!
     --Creating Tile-Objects, Tile'ing is only in X-Axis: O.Core:CreateTileObject(ImagePath1 for dayTile, ImagePath2 för night Tile, PostionX, PositionY, ObjectSpeed, LayerNumber(1 = most backgroundish), If image is a Phys-Object (true - false), if PhysObject is a Circle (true) or Square (false), Type of PhysObject ("static", "dynamic", "kinetic"), This last value is a SizeOffset, makes the collision-Phys Object larger or smaller then the ImageObject, only works on circles for the moment)
-    --Creating Time-Objects, This creates the object in intrevals: O.Core:CreateTimeObject(First value now is the time interwall in sec between object creation, the rest has the same parameters as above) Extra: 3 last values is SinYMovement: How High and low it moves, SinYSpeed: self explainible, SinYStart: where to start on a sincurve.
+    --Creating Time-Objects, This creates the object in intrevals: O.Core:CreateTimeObject(First value now is the time interwall in sec between object creation, the rest has the same parameters as above) Extra: 3 last values is SinYMovement: How High and low it moves, SinYSpeed: self explainible, SinYStart: where to start on a sincurve. The New last value is the point the object gives if pased
   
   	-- Tricket med att få Tiles att funka är att skapa dem väldigt mycket åt höger, dock så är det mer prestanda ju mer åt höger man skapar dem
     O.Core:CreateTileObject( "art/Backdrop/backdropDay.png", "art/Backdrop/backdropNight.png", 0, (O.ScreenMaxY * 0.4), 1, 1, false, false, "static", 0)
@@ -62,16 +63,16 @@ function O:CreateObsticles()
  	local DayNightValue = O.Core:GetTimeCycle()
  	DayNightValue = DayNightValue*DayNightValue; ---- för att svårighetsgraden ska öka exponentiellt istället för linjärt
  	--print (DayNightValue)
- 	O.Core:CreateTimeObject( 20, "art/Ingame/mountain.png", "art/Ingame/mountainNight.png", ObstStartPosX, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.3), 2, false, false, "static", 0, 0, 0, 0)
-	O.Core:CreateTimeObject( 15, "art/Ingame/mountain_2.png", "art/Ingame/mountain_2Night.png", ObstStartPosX, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.35), 1, false, false, "static", 0, 0, 0, 0)
+ 	O.Core:CreateTimeObject( 20, "art/Ingame/mountain.png", "art/Ingame/mountainNight.png", ObstStartPosX, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.3), 2, false, false, "static", 0, 0, 0, 0, 0)
+	O.Core:CreateTimeObject( 15, "art/Ingame/mountain_2.png", "art/Ingame/mountain_2Night.png", ObstStartPosX, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.35), 1, false, false, "static", 0, 0, 0, 0, 0)
 	
 	local RandomPosXOffset1 = math.random(-45,65) * DayNightValue;
 	local RandomPosXOffset2 = math.random(-65,45)* -1 * DayNightValue; --- omkastning pga dålig random funktion
 
-	O.Core:CreateTimeObject( 2, "art/Ingame/longcatbody1.png", "art/Ingame/longcatbody1Night.png", ObstStartPosX , Obj1Y, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0)
-	O.Core:CreateTimeObject( 2, "art/Ingame/longcatbody2.png", "art/Ingame/longcatbody2Night.png", ObstStartPosX , Obj2Y, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0)
-	O.Core:CreateTimeObject( 2, "art/Ingame/longcatarm1.png", "art/Ingame/longcatarm1Night.png", ObstStartPosX-35, Obj1Y+110, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0)
-	O.Core:CreateTimeObject( 2, "art/Ingame/longcatarm2.png", "art/Ingame/longcatarm2Night.png", ObstStartPosX-35, Obj2Y-110, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0)
+	O.Core:CreateTimeObject( 2, "art/Ingame/longcatbody1.png", "art/Ingame/longcatbody1Night.png", ObstStartPosX , Obj1Y, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0, 7+(15*DayNightValue))
+	O.Core:CreateTimeObject( 2, "art/Ingame/longcatbody2.png", "art/Ingame/longcatbody2Night.png", ObstStartPosX , Obj2Y, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0, 7+(15*DayNightValue))
+	O.Core:CreateTimeObject( 2, "art/Ingame/longcatarm1.png", "art/Ingame/longcatarm1Night.png", ObstStartPosX-35, Obj1Y+110, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0, 0)
+	O.Core:CreateTimeObject( 2, "art/Ingame/longcatarm2.png", "art/Ingame/longcatarm2Night.png", ObstStartPosX-35, Obj2Y-110, O.WorldSpeed, 4, true, false, "static", 0, 20*DayNightValue, 1*DayNightValue, 0, 0)
 
 
 
@@ -91,13 +92,27 @@ function O:CreateObsticles()
 end
 
 
+O.PlayerPoints = 0;
+O.PrePlayerPoints = 0;
 function O:Update(event)
 
+	--- Player Points--------
+	O.PlayerPoints = O.Player:GetPlayerPoints();
+	if O.PlayerPoints > O.PrePlayerPoints then
+		print(O.PlayerPoints - O.PrePlayerPoints, 'New Points');
+		print(O.PlayerPoints, 'Total Points');
+		O.PrePlayerPoints = O.PlayerPoints;
+	end
+	-------------------------
+
 	local PlayerCollide = O.Player:GetPlayerCollisionData()
+
 	if PlayerCollide == true then
 		O.Core:PauseGame();
+		O.Player:Death();
 		hud.gameOverBoxMove();
 		function O.restartGame()
+			O.Core:PauseGame();
 			O.Core:StopGame()
 			O.Player:DestroyPLayer();
 			O.Core:DeleteDisplayGroups();
@@ -108,6 +123,7 @@ function O:Update(event)
 			Runtime:removeEventListener("tap",O.restartGame)
 		end
 		timer.performWithDelay(1000,function()
+			
 			Runtime:addEventListener("tap",O.restartGame)
 		end)
 	elseif O.StartingGame == true then
@@ -130,6 +146,8 @@ function O:StartingUpGame(event)
 	O:StartingUpdate(event)
 	timer.performWithDelay( 1, function() 
 		O.Player:CreatePlayer(0, 0);
+		O.Player:SetPlayerPoints(0);
+		O.PrePlayerPoints = 0;
 		O.Core:PauseGame();
 		O.Core.GameReadyToRun = true;
 	 end, 1 )
@@ -143,7 +161,7 @@ function O:StartingUpdate(event)
 end
 
 function O:GameStartExclusiveContent()  --- allt Content som ska laddas in under uppstart
-	O.Core:CreateTimeObject( 0, "art/Ingame/mountain.png", "art/Ingame/mountain.png", O.ScreenMaxX * 0.35, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.3), 2, false, false, "static", 0, 0, 0, 0)
+	O.Core:CreateTimeObject( 0, "art/Ingame/mountain.png", "art/Ingame/mountain.png", O.ScreenMaxX * 0.35, (O.ScreenMaxY*0.635), (O.WorldSpeed*0.3), 2, false, false, "static", 0, 0, 0, 0, 0)
 end
 
 

@@ -36,7 +36,7 @@ end
 local CamMaxX = display.viewableContentWidth
 local CamMaxY = display.viewableContentHeight
 local WorldSpeed = 85
-local DayNightSpeed = 0.1
+local DayNightSpeed = 0.02;
 local Gravity = 50
 local FlappBoost= 400;
 -- Info: Initiate ObjectManager, firstvalue: Physics pointer, next 4 walues: screen min and max, WorldSpeed: is a general gameplayspeed, DayNightSpeed is the night and day speedfactor, Gravity: quite self explanible, FlappBoost: the force that doge uses each tap
