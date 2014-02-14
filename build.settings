@@ -2,45 +2,38 @@
 -- portrait, portraitUpsideDown, landscapeLeft, landscapeRight
 
 settings = {
-	
-	orientation = {
-		default = "portrait",
-		supported = { "portrait", }
-	},
-	
-	iphone = {
-		plist = {
+    
+    orientation = {
+        default = "portrait",
+        supported = { "portrait", }
+    },
+    
+    iphone = {
+            plist = {
 
-						UIStatusBarHidden = false,
-						UIPrerenderedIcon = true, -- set to false for "shine" overlay
-						--UIApplicationExitsOnSuspend = true, -- uncomment to quit app on suspend
-		    UIAppFonts =
-		         	{
-		                "origa___.ttf",
+                UIApplicationExitsOnSuspend = false,
+                FacebookAppID = "352378071558753",  --replace XXXXXXXXXX with your Facebook App ID
+                CFBundleURLTypes = {
+                    {
+                    CFBundleURLSchemes = { "fb352378071558753", }  --replace XXXXXXXXXX with your Facebook App ID
+                    }
+                },
 
-		            },
-			            --[[
-			            -- iOS app URL schemes:
-			            CFBundleURLTypes =
-			            {
-			                {
-			                    CFBundleURLSchemes =
-			                    {
-			                        "fbXXXXXXXXXXXXXX", -- example scheme for facebook
-			                        "coronasdkapp", -- example second scheme
-			                    }
-			                }
-			            }
-			            --]]
-		}
-	},
-	
+                ["URL types"] = {
+                    item = {
+                        ["URL Schemes"] =
+                            { ["Item 0"] = "fb352378071558753" },  --replace XXXXXXXXXX with your Facebook App ID
+                    },
+                },
+            }
+        },
+    
 
-	-- Android permissions
+    -- Android permissions
 
-	androidPermissions = {
-  		"android.permission.INTERNET",
-  	},
+    androidPermissions = {
+        "android.permission.INTERNET",
+    },
 
 
 }
