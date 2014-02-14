@@ -149,7 +149,7 @@ function O:StartingUpGame(event)
 		O.Player:CreatePlayer(0, 0);
 		O.Player:SetPlayerPoints(0);
 		O.PrePlayerPoints = 0;
-		hud.getScore(O.PlayerPoints)
+		--hud.getScore(O.PlayerPoints)
 
 		O.Core:PauseGame();
 		O.Core.GameReadyToRun = true;
