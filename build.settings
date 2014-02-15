@@ -32,6 +32,7 @@ settings = {
 			UIAppFonts =
 			            {
 			                "Arcade.ttf",
+                            "Ponderosa.ttf",
 
 			            },
                 UIApplicationExitsOnSuspend = false,
