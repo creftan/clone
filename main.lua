@@ -2,7 +2,7 @@ display.setStatusBar( display.HiddenStatusBar )
 
 local storyboard 	= require "storyboard"
 
-function print()
+function printt()
 
 end 
 _G.aud = require("audioo")

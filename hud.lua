@@ -7,6 +7,10 @@ local socialModule = require "socialModule"
 
 local font = "Ponderosa"
 
+--local medal = {9,74,199}
+local medal = {1,2,3}
+local medalimage = {"art/Ingame/dogenope.png","art/Ingame/Dogebronze.png","art/Ingame/dogesilver.png","art/Ingame/Dogegold.png"}
+
 function hud.makeRandomSentence()
 	local list1 = {"SUCH","VERY","SO","MUCH","WOW"}
 	local list2 = {"SCORE","BRAVE","PROGRESS","DOGE","GOOD"}
@@ -158,8 +162,34 @@ function hud.createHud(event,group)
 
 
 	function hud.setScoresGameOver(score1, score2)
+		print (score1, medal[1])
+		local whatmedal = 1 
+
+		if score1 > medal[1] then 
+		whatmedal = 2
+		end
+
+		if score1 > medal[2] then 
+		whatmedal = 3
+
+		end
+
+		if score1 > medal[3] then 
+		whatmedal = 4
+		end
+
+		print (whatmedal)
+		print (medalimage[whatmedal])
+
+		hud.medal = display.newImage(hud.gameOverGroup,medalimage[whatmedal],0,0)
+
+		hud.medal.x = -28.5
+		hud.medal.y = 3
+
+
 		hud.gameOvertext1.text = score1		
 		hud.gameOvertext2.text = score2
+		
 	end 
 
 	function hud.gameOverBoxMove()
@@ -213,7 +243,7 @@ end
 function hud.deleteHud(event,group)
 	--print("Deletes ")
 	display.remove(hud.scoreText)
-
+	display.remove(hud.medal)
 
 	display.remove(hud.gameOverGroup)
 	for i=1,#hudList do
