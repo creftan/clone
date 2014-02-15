@@ -2,7 +2,8 @@
 -- portrait, portraitUpsideDown, landscapeLeft, landscapeRight
 
 settings = {
-    
+ 
+
     orientation = {
         default = "portrait",
         supported = { "portrait", }
