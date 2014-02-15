@@ -27,7 +27,7 @@ settings = {
             "Icon-small.png",
             "Icon-small@2x.png"
             },
-            CFBundleIdentifier = "com.threeofus.flapdoge",
+            CFBundleIdentifier = "com.threeofus.Flapdoge",
             CFBundleDisplayName = "Flapdoge",
 			UIAppFonts =
 			            {
