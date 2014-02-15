@@ -45,11 +45,11 @@ local sceneView = self.view
 	logo.x = _W*.5
 	logo.y = _H*.15
 	
-	copy = display.newImageRect("art/startscreen/copyright.png", 113,30)
+	copy = display.newImageRect("art/startscreen/copyright.png", 260,20)
 	copy.xScale = 1
 	copy.yScale = 1
 	copy.x = _W*.5
-	copy.y = _H*.9
+	copy.y = _H*.25
 	
 
 
@@ -145,7 +145,7 @@ local sceneView = self.view
 
 	function move(speed)
 
-		c = c + 1 
+		c = c + .1 
 
 		p.position1 = p.position1 - speed
 
@@ -168,6 +168,10 @@ local sceneView = self.view
 		topgroup.x = p.position1
 		parallax1.x = p.position2 
 		parallax2.x = p.position3 
+		
+		logo.y = _H*.15 + math.sin(c)*3
+		copy.y = _H*.25 + math.sin(c+5)*3
+
 		--doge.y =_H * .4 + math.sin(c/10)*5
 		--doge_tail.rotation = 0 + math.sin(c/3)*10
 	end

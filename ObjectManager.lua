@@ -40,7 +40,7 @@ function O:CreateObsticles()
 	local ObstCount = 0;
 	local ObstWidth = 52;
 	local ObstHeight = 320;
-	local ObstSpace = 98 --95 
+	local ObstSpace = 95 --95 
 	local ObstStartPosX = O.ScreenMaxX  + (ObstWidth);
 	local ObstStartPosY = O.ScreenMaxY*0.5;
 	local ObstSpeed = 85

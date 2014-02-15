@@ -4,6 +4,8 @@ local soundOn = true
 local musicOn = true
 local socialModule = require "socialModule"
 
+local font = "Ponderosa"
+
 function hud.makeRandomSentence()
 	local list1 = {"SUCH","VERY","SO","MUCH","WOW"}
 	local list2 = {"SCORE","BRAVE","PROGRESS","DOGE","GOOD"}
@@ -88,12 +90,12 @@ function hud.createHud(event,group)
 
 	end
 
-	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,"Arcade",40)
+	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,font,40)
 	hud.scoreText.text = 0 
 	hud.scoreText.x = _W*.5
 	hud.scoreText.y = _H*.15
 
-	hud.wowText = display.newText(hud.hudGroup," ",0,0,"Arcade",20)
+	hud.wowText = display.newText(hud.hudGroup," ",0,0,font,20)
 	hud.wowText.x = _W*.5
 	hud.wowText.y = _H*.22
 	
@@ -169,10 +171,10 @@ function hud.createHud(event,group)
 	hud.hudGroup:insert(hud.gameOverGroup)
 	
 	hud.gameOver = display.newImage(hud.gameOverGroup,"art/Ingame/gameoverbox.png",0,0)
-	hud.gameOvertext1 = display.newText(hud.gameOverGroup,"0", 0,0, "Arcade", 10)
+	hud.gameOvertext1 = display.newText(hud.gameOverGroup,"0", 0,0, font, 10)
 	hud.gameOvertext1.x = 10
 	hud.gameOvertext1.y = -7
-	hud.gameOvertext2 = display.newText(hud.gameOverGroup,"0", 0,0, "Arcade", 10)
+	hud.gameOvertext2 = display.newText(hud.gameOverGroup,"0", 0,0, font, 10)
 	hud.gameOvertext2.x = 10
 	hud.gameOvertext2.y = 16
 
