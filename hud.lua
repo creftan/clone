@@ -7,8 +7,8 @@ local socialModule = require "socialModule"
 
 local font = "Ponderosa"
 
---local medal = {9,74,199}
-local medal = {1,2,3}
+local medal = {9,74,199}
+--local medal = {1,2,3}
 local medalimage = {"art/Ingame/dogenope.png","art/Ingame/Dogebronze.png","art/Ingame/dogesilver.png","art/Ingame/Dogegold.png"}
 
 function hud.makeRandomSentence()

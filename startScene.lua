@@ -314,7 +314,7 @@ display.remove(startButton)
 display.remove(optionsButton)
 display.remove(helpButton)
 display.remove(menuGroup)
-
+display.remove(creditstext)
 display.remove(startbutton)
 display.remove(optionbutton)
 display.remove(scorebutton)
