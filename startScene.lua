@@ -287,7 +287,7 @@ end
 		else
 			transitionFunc(menuGroup,100,_H*.75,easing.InOutQuad,function()
 				transitionFunc(menuGroup,100,-_H,easing.InOutQuad,function()
-					storyboard.gotoScene(scene,{effect="crossFade",time=100})
+					storyboard.gotoScene(scene)
 				end)
 			end)
 		end
