@@ -287,6 +287,9 @@ end
 		else
 			transitionFunc(menuGroup,100,_H*.75,easing.InOutQuad,function()
 				transitionFunc(menuGroup,100,-_H,easing.InOutQuad,function()
+					aud.stopmusic()
+					aud.playMusic("Audio/gameplay.mp3")
+
 					storyboard.gotoScene(scene)
 				end)
 			end)

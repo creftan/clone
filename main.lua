@@ -8,6 +8,6 @@ end
 _G.aud = require("audioo")
 _G.sounds = aud.loadsounds()
 
-aud.playMusic()
+aud.playMusic("Audio/menu.mp3")
 
 storyboard.gotoScene("startBackground")
