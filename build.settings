@@ -27,11 +27,12 @@ settings = {
             "Icon-small.png",
             "Icon-small@2x.png"
             },
-            CFBundleIdentifier = "com.threeofus.flapdoge",
+            CFBundleIdentifier = "com.threeofus.Flapdoge",
             CFBundleDisplayName = "Flapdoge",
 			UIAppFonts =
 			            {
 			                "Arcade.ttf",
+                            "Ponderosa.ttf",
 
 			            },
                 UIApplicationExitsOnSuspend = false,
