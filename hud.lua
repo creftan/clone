@@ -25,22 +25,29 @@ end
 
 function hud.forSfx(event)
 	--if event.phase == "ended" then
+		
 		if soundOn then
+			print("Here")
 			soundOn = false
+			buttonListOff[2].isVisible = true
 			aud.setsoundvolume(0)
 		else 
 			soundOn = true
+			buttonListOff[2].isVisible = false
 			aud.setsoundvolume(1)
 		end
 	--end
 end
 
 function hud.forMusic(event)
+	
 	if musicOn then
 		musicOn = false
+		buttonListOff[1].isVisible = true
 		aud.setmusicvolume(0)
 	else 
 		musicOn = true
+		buttonListOff[1].isVisible = false
 		aud.setmusicvolume(.3)
 	end
 end
@@ -76,9 +83,17 @@ function hud.createHud(event,group)
 				{listener=hud.forSfx,	pic="art/Buttons/b_speaker.png"},
 			}
 
+	hudListOff ={ 
+					{pic="art/Buttons/b_noteoff.png"},
+				 	{pic="art/Buttons/b_speakeroff.png"},
+				 }
+
 	buttonList = {}
+	buttonListOff = {}
 	
 	socialButtonList = {}
+
+
 
 	for i=1,#hudList do
 		hud.hudGroup = display.newGroup()
@@ -92,6 +107,17 @@ function hud.createHud(event,group)
 		hud.hudPic:addEventListener("tap",hudList[i].listener)
 		hud.hudPic:addEventListener("touch",hud.returntrue)
 		group:insert(hud.hudGroup)
+
+	end
+
+	for i=1,#hudListOff do 
+		hud.hudGroupOff = display.newGroup()
+		hud.hudPicOff = display.newImage(hud.hudGroupOff,hudListOff[i].pic,0,0)
+		hud.hudPicOff.x = 20 + hud.hudPicOff.width*(i-1)*2.5
+		hud.hudPicOff.xScale, hud.hudPicOff.yScale = 2,2
+		hud.hudPicOff.isVisible = false
+		buttonListOff[#buttonListOff+1] = hud.hudPicOff
+		group:insert(hud.hudGroupOff)
 
 	end
 
@@ -242,10 +268,11 @@ end
 
 function hud.deleteHud(event,group)
 	--print("Deletes ")
+	display.remove(hud.hudGroupOff)
 	display.remove(hud.scoreText)
 	display.remove(hud.medal)
-
 	display.remove(hud.gameOverGroup)
+
 	for i=1,#hudList do
 		buttonList[i]:removeEventListener("touch",hudList[i].listener)
 		buttonList[i]:removeEventListener("tap",hud.returntrue)
@@ -265,6 +292,14 @@ end
 	gameOverTransition2 = nil
 	gameOverTransition = nil
 end	
+
+socialList = nil
+hudList = nil
+hudListOff = nil
+buttonList = nil
+buttonListOff = nil 
+	
+socialButtonList = {}
 
 sentence = hud.makeRandomSentence()
 --print (sentence)
