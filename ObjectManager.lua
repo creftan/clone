@@ -148,6 +148,7 @@ function O:StartingUpGame(event)
 	O:StartingUpdate(event)
 	timer.performWithDelay( 1, function() 
 		O.Player:CreatePlayer(0, 0);
+		O.Player:CreatePlayerTapImage();
 		O.Player:SetPlayerPoints(0);
 		O.PrePlayerPoints = 0;
 		--hud.getScore(O.PlayerPoints)

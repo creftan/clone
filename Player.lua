@@ -61,6 +61,34 @@ function P:CreatePlayer(PosX, PosY)
 	--print("Player Created")
 end
 
+	P.PlayerTapImage = {};
+function P:CreatePlayerTapImage()
+	local Obj = {};
+	Obj.Doge = display.newImageRect(P.Player,"art/DogesmallColorless.png",30,26);
+	Obj.Tail = display.newImageRect(P.Player,"art/doge_tailColorless.png",64,64);
+	Obj.TapMenu = display.newImage(P.Player,"art/DogeTapPic.png");
+
+	Obj.Doge.x = P.Player.doge.x;
+	Obj.Doge.y = P.Player.doge.y;
+	Obj.Tail.x = P.Player.tail.x;
+	Obj.Tail.y = P.Player.tail.y;
+	Obj.TapMenu.x = P.Player.tail.x + 16;
+	Obj.TapMenu.y = P.Player.tail.y + 38;
+
+	P.PlayerTapImage = Obj;
+end
+
+function P:DestroyPlayerTapImage()
+	if P.PlayerTapImage ~= nil then
+		P.PlayerTapImage.Doge:removeSelf();
+		P.PlayerTapImage.Doge = nil;
+		P.PlayerTapImage.Tail:removeSelf();
+		P.PlayerTapImage.Tail = nil;
+		P.PlayerTapImage.TapMenu:removeSelf();
+		P.PlayerTapImage.TapMenu = nil;
+	end
+end
+
 function P:DestroyPLayer()
 	if P.Player ~= nil then
 	--	print("Player Destroyed")
@@ -134,6 +162,7 @@ function OnTouch( event )
     elseif P.Core.GameReadyToRun == true then
     	aud.play(sounds.flap)
     	P.Core.GameReadyToRun = false;
+    	P:DestroyPlayerTapImage();
     	P.Core:StartGame();
     	P.Player:setLinearVelocity( 0, P.YVelBoost * -1 )
     end
