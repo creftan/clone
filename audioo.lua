@@ -41,7 +41,7 @@ end
 
 function aud.loadsounds(soundtable)
 	if not soundtable then 
-		soundtable = {flap = {"flap.wav"}, die = {"die.wav"}, point = {"point.wav"}}
+		soundtable = {flap = {"flap.wav"}, die = {"die.wav"}, point = {"point.wav"}, splash = {"splash.mp3"},}
 	end 
 
 	for k,v in pairs(soundtable) do

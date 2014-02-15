@@ -1,6 +1,6 @@
 _W = display.contentWidth
 _H = display.contentHeight
-
+aud.playMusic("Audio/menu.mp3")
 local storyboard    = require "storyboard"
 local scene         = storyboard.newScene()
 
