@@ -17,17 +17,20 @@ local sceneView = self.view
 	bgRect:setFillColor(0)
 	
 	bg = display.newImage("art/startscreen/3ofus.png",0,0)
-	bg.x, bg.y = _W*.5, _H*.5
+	bg.x, bg.y = _W*.5, -100
 	bg.xScale, bg.yScale = 2,2
 	
 	sceneView:insert(bgRect)
 	sceneView:insert(bg)
 	
 	tim2 = timer.performWithDelay(500,function()
+		transition.to(bg,{ time = 100, y = _H*.5, transition = easing.InOutQuad})
 		aud.play(sounds.splash)
 	end) 
 	tim = timer.performWithDelay(3000,function()
-		storyboard.gotoScene("startBackground",{effect="crossFade",time=500})
+		transition.to(bg,{ time = 100, y = _H*1.5, transition = easing.InOutQuad, onComplete = function() 
+		storyboard.gotoScene("startBackground")
+		end })
 	end)
 end 
 
