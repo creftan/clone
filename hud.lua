@@ -2,6 +2,7 @@
 local hud = {}
 local soundOn = true
 local musicOn = true
+local enablesocial = false
 local socialModule = require "socialModule"
 
 local font = "Ponderosa"
@@ -183,6 +184,9 @@ function hud.createHud(event,group)
 	hud.gameOverGroup.y = -_H
 	hud.gameOverGroup.xScale, hud.gameOverGroup.yScale = 2.5,2.5
 	
+
+	if enablesocial then 
+
 	for i=1,#socialList do
 		hud.socialGroup = display.newGroup()
 		hud.socialPics = display.newImage(hud.socialGroup,socialList[i].pic,0,0)
@@ -196,6 +200,7 @@ function hud.createHud(event,group)
 
 		hud.socialGroup:addEventListener("touch",socialList[i].listener)
 		hud.socialGroup:addEventListener("tap",hud.returntrue)
+	end 
 	end
 
 	return hud.createHud
@@ -218,7 +223,7 @@ function hud.deleteHud(event,group)
 		display.remove(buttonList[i])
 		display.remove(group)
 	end
-
+	if enablesocial then 
 	for i=1,#socialList do
 		socialButtonList[i]:removeEventListener("tap",hud.returntrue)
 		socialButtonList[i]:removeEventListener("touch",socialList[i].listener)
@@ -226,7 +231,7 @@ function hud.deleteHud(event,group)
 		display.remove(socialButtonList)
 		display.remove(socialGroup)
 	end
-
+end 
 	gameOverTransition2 = nil
 	gameOverTransition = nil
 end	

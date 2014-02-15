@@ -4,7 +4,10 @@ _H = display.contentHeight
 local storyboard    = require "storyboard"
 local scene         = storyboard.newScene()
 
+
+
 function scene:createScene(e)
+local creditsstring = "Code : Oskar Andersson, Stian Saunes, Mikael Isaksson   Gfx : Stian Saunes   Music : Modulf (Moffus) Vartdal   Additional Stuff : Jonathan Kemi"
 
 local sceneView = self.view
 	
@@ -51,8 +54,6 @@ local sceneView = self.view
 	copy.x = _W*.5
 	copy.y = _H*.25
 	
-
-
 
 		parallax2.layer1_1=display.newImageRect(parallax2,"art/startscreen/mountain.png", 64,128)
 		parallax2.layer1_1.xScale = 2
@@ -139,12 +140,18 @@ local sceneView = self.view
 		sky:toBack()
 		copy:toFront()
 		floorgroup.y = _H*.1
+
+	creditstext = display.newText(creditsstring, 0,0, "Ponderosa", 10)
+	creditstext.y = _H*.885
+	creditstext.x = (creditstext.contentWidth)
+
 	end 
 
 	local c = 0 
 
 	function move(speed)
-
+		creditstext.x = creditstext.x - 1
+		if creditstext.x == -600 then creditstext.x = creditstext.contentWidth end 
 		c = c + .1 
 
 		p.position1 = p.position1 - speed
