@@ -1,10 +1,7 @@
 
 local hud = {}
-local soundOn = true
-local musicOn = true
 local enablesocial = false
 local socialModule = require "socialModule"
-
 local font = "Ponderosa"
 
 local medal = {9,74,199}
@@ -27,7 +24,6 @@ function hud.forSfx(event)
 	--if event.phase == "ended" then
 		
 		if soundOn then
-			print("Here")
 			soundOn = false
 			buttonListOff[2].isVisible = true
 			aud.setsoundvolume(0)
@@ -40,7 +36,6 @@ function hud.forSfx(event)
 end
 
 function hud.forMusic(event)
-	
 	if musicOn then
 		musicOn = false
 		buttonListOff[1].isVisible = true
@@ -73,6 +68,10 @@ end
 
 
 function hud.createHud(event,group)
+
+
+
+
 	socialList = {
 				{listener=hud.forFacebook, 	pic="art/face.png"},
 				{listener=hud.forTwitter,	pic="art/twit.png"},
@@ -115,12 +114,19 @@ function hud.createHud(event,group)
 		hud.hudPicOff = display.newImage(hud.hudGroupOff,hudListOff[i].pic,0,0)
 		hud.hudPicOff.x = 20 + hud.hudPicOff.width*(i-1)*2.5
 		hud.hudPicOff.xScale, hud.hudPicOff.yScale = 2,2
-		hud.hudPicOff.isVisible = false
+
 		buttonListOff[#buttonListOff+1] = hud.hudPicOff
+
 		group:insert(hud.hudGroupOff)
 
 	end
+		if soundOn then 
+			buttonListOff[1].isVisible = false
+		end
 
+		if musicOn then
+			buttonListOff[2].isVisible = false
+		end
 	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,font,40)
 	hud.scoreText.text = 0 
 	hud.scoreText.x = _W*.5
@@ -259,6 +265,7 @@ function hud.createHud(event,group)
 	end 
 	end
 
+
 	return hud.createHud
 end
 
@@ -268,6 +275,8 @@ end
 
 function hud.deleteHud(event,group)
 	--print("Deletes ")
+	buttonListOff[1]:removeSelf()
+	buttonListOff[2]:removeSelf()
 	display.remove(hud.hudGroupOff)
 	display.remove(hud.scoreText)
 	display.remove(hud.medal)
