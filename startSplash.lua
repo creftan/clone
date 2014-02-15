@@ -4,6 +4,7 @@ local scene         = storyboard.newScene()
 
 --display.setDefault( "background", 255, 255, 255 )
 display.setDefault( "magTextureFilter", "nearest" )
+
 display.setDefault( "minTextureFilter", "nearest" )
 
 function scene:createScene(e)
