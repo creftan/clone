@@ -11,16 +11,22 @@ function scene:createScene(e)
 local sceneView = self.view
 	local _W= display.contentWidth
 	local _H = display.contentHeight
-
+	bgRect = display.newRect(0,0,_W*1.5,_H*1.5)
+	bgRect.x, bgRect.y = _W*.5, _H*.5
+	bgRect:setFillColor(0)
+	
 	bg = display.newImage("art/startscreen/3ofus.png",0,0)
 	bg.x, bg.y = _W*.5, _H*.5
 	bg.xScale, bg.yScale = 2,2
+	
+	sceneView:insert(bgRect)
 	sceneView:insert(bg)
+	
 	tim2 = timer.performWithDelay(500,function()
 		aud.play(sounds.splash)
 	end) 
 	tim = timer.performWithDelay(3000,function()
-		storyboard.gotoScene("startBackground")
+		storyboard.gotoScene("startBackground",{effect="crossFade",time=500})
 	end)
 end 
 
