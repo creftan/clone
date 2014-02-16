@@ -121,11 +121,11 @@ function hud.createHud(event,group)
 
 	end
 		if soundOn then 
-			buttonListOff[1].isVisible = false
+			buttonListOff[2].isVisible = false
 		end
 
 		if musicOn then
-			buttonListOff[2].isVisible = false
+			buttonListOff[1].isVisible = false
 		end
 	hud.scoreText = display.newText(hud.hudGroup,"0",0,0,font,40)
 	hud.scoreText.text = 0 
