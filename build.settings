@@ -3,6 +3,15 @@
 
 settings = {
  
+ plugins =
+    {
+        -- key is the name passed to Lua's 'require()'
+        ["CoronaProvider.ads.inmobi"] =
+        {
+            -- required
+            publisherId = "com.coronalabs",
+        },
+    },      
 
     orientation = {
         default = "portrait",
