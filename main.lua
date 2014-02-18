@@ -6,12 +6,12 @@ local ads = require "ads"
 
 local function adListener( event )
     if event.isError then
-        -- Failed to receive an ad.
+        print(event.response)
     end
 end
 
-ads.init( "inmobi", "bbe39d2e454c46afacabe5ba53a4be89", adListener )
-ads.show( "banner320x48", { x=0, y=100, interval=60, testMode=false } )
+ads.init( "inneractive", "ThreeOfUs_FlapDoge_Android", adListener )
+ads.show( "banner", { x=0, y=display.contentHeight*.9, interval=60, testMode=false } )
 
 function printt()
 
