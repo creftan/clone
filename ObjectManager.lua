@@ -87,6 +87,7 @@ O.PlayerPoints = 0;
 O.PrePlayerPoints = 0;
 function O:Update(event)
 
+
 	--- Player Points--------
 	O.PlayerPoints = O.Player:GetPlayerPoints();
 	if O.PlayerPoints > O.PrePlayerPoints then

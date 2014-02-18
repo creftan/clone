@@ -1,12 +1,13 @@
 display.setStatusBar( display.HiddenStatusBar )
 
 local storyboard 	= require "storyboard"
-
+adcounter = 0 
 local ads = require "ads"
 
 local function adListener( event )
     if event.isError then
-        print(event.response)
+       adcounter = adcounter + 1 
+       print ("ad "..counter)
     end
 end
 

@@ -5,7 +5,7 @@ local hud = {}
 local enablesocial = false
 local socialModule = require "socialModule"
 local font = "Ponderosa"
-
+local boolswitch = true 
 _W = display.contentWidth
 _H = display.contentHeight
 
@@ -141,7 +141,18 @@ function hud.createHud(event,group)
 	hud.wowText.x = _W*.5
 	hud.wowText.y = _H*.22
 	
+	hud.adblock = display.newImageRect (hud.hudGroup,"art/adblock.png",300,30)
+	hud.adblock.x = _W*.5
+	hud.adblock.y = _H*.90
+	hud.adblock2 = display.newImageRect (hud.hudGroup,"art/adblock2.png",300,30)
+	hud.adblock2.x = _W*.5
+	hud.adblock2.y = _H*.90
+		hud.adblock.alpha = 0
+		hud.adblock2.alpha = 0
+			
+
 	local scorecounter = 0 
+
 
 	function hud.resetScore()
 		scorecounter = 0 
@@ -149,6 +160,7 @@ function hud.createHud(event,group)
 	end 
 
 	function hud.getScore(score)
+		hud.ad()
 		local oldtext = {}
 		scorecounter = scorecounter + 1
 		oldtext.y = hud.scoreText.y
@@ -196,6 +208,25 @@ function hud.createHud(event,group)
         file = nil		
  	end 
 
+	function hud.ad()
+
+			
+			print "adblink"
+			boolswitch = not boolswitch
+
+			if boolswitch then 
+			print "adblink"
+
+					hud.adblock.alpha = 1
+					hud.adblock2.alpha = 0 
+			else
+			print "adblink 2"
+
+					hud.adblock.alpha = 0
+					hud.adblock2.alpha = 1 
+			end 				
+			 
+	end 
 
 
 	function hud.setScoresGameOver(score1, score2)
