@@ -145,6 +145,8 @@ local sceneView = self.view
 	creditstext.y = _H*.885
 	creditstext.x = (creditstext.contentWidth)
 
+
+	
 	end 
 
 	local c = 0 

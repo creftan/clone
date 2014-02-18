@@ -1,9 +1,13 @@
 
 
+
 local hud = {}
 local enablesocial = false
 local socialModule = require "socialModule"
 local font = "Ponderosa"
+
+_W = display.contentWidth
+_H = display.contentHeight
 
 local medal = {9,74,199}
 --local medal = {1,2,3}
@@ -266,7 +270,7 @@ function hud.createHud(event,group)
 	end 
 	end
 
-
+	
 	return hud.createHud
 end
 

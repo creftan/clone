@@ -11,7 +11,7 @@ local function adListener( event )
 end
 
 ads.init( "inneractive", "ThreeOfUs_FlapDoge_Android", adListener )
-ads.show( "banner", { x=0, y=display.contentHeight*.9, interval=60, testMode=false } )
+ads.show( "banner", { x=0, y=display.contentHeight*.94, interval=60, testMode=false } )
 
 function printt()
 
