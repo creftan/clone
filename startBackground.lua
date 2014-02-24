@@ -7,7 +7,7 @@ local scene         = storyboard.newScene()
 
 
 function scene:createScene(e)
-local creditsstring = "Code : Oskar Andersson, Stian Saunes, Mikael Isaksson   Gfx : Stian Saunes   Music : Modulf (Moffus) Vartdal   Additional Stuff : Jonathan Kemi"
+local creditsstring = "Code : Oskar Andersson, Stian Saunes, Mikael Isaksson   Gfx : Stian Saunes   Music : Modulf (Moffus) Vartdal"
 
 local sceneView = self.view
 	
@@ -152,7 +152,7 @@ local sceneView = self.view
 	local c = 0 
 
 	function move(speed)
-		creditstext.x = creditstext.x - 1
+		creditstext.x = creditstext.x - 2
 		if creditstext.x == -600 then creditstext.x = creditstext.contentWidth end 
 		c = c + .1 
 

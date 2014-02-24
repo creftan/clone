@@ -210,7 +210,7 @@ function hud.createHud(event,group)
 
 	function hud.ad()
 
-			
+			if adbool then
 			print "adblink"
 			boolswitch = not boolswitch
 
@@ -225,7 +225,7 @@ function hud.createHud(event,group)
 					hud.adblock.alpha = 0
 					hud.adblock2.alpha = 1 
 			end 				
-			 
+			end 
 	end 
 
 

@@ -40,10 +40,10 @@ function O:CreateObsticles()
 	local ObstCount = 0;
 	local ObstWidth = 52;
 	local ObstHeight = 320;
-	local ObstSpace = 95 --95 
+	local ObstSpace = 93 --95 
 	local ObstStartPosX = O.ScreenMaxX  + (ObstWidth);
 	local ObstStartPosY = O.ScreenMaxY*0.5;
-	local ObstSpeed = 85
+	local ObstSpeed = 95 --85
 
     local Rand = math.random(-95, 95)
     local Obj1Y = ObstStartPosY - (ObstHeight * 0.5) - (ObstSpace * 0.5) + Rand
